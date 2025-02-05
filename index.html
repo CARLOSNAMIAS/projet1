@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acordeón de Menú</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/img/logo_old.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <style>
+      .product-image img {
+        width: 200px; /* Ajusta el tamaño de la imagen */
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .product-description {
+        text-align: justify;
+      }
+
+      .product-description h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #48110d;
+        text-align: center;
+        line-height: 1.2;
+        font-family: Arial, sans-serif;
+      }
+
+      .product-description p {
+        font-size: 1rem; /* Tamaño del texto */
+        color: #48110d; /* Color del texto */
+        line-height: 1.1; /* Espaciado entre líneas */
+        text-align: justify; /* Justificación del texto */
+        max-width: 500px; /* Ancho máximo del texto */
+        margin: 0 auto; /* Centrar dentro del contenedor */
+        margin-bottom: 8px; /* Separación entre productos */
+        font-family: Arial, sans-serif;
+      }
+
+      .product-info {
+        text-align: justify;
+        font-family: Arial, sans-serif;
+      }
+
+      .product-info .price {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #48110d; /* Color llamativo para el precio */
+        text-align: justify;
+      }
+
+      .product-info .btn-custom {
+        background-color: #f58b2d; /* Color del botón */
+        color: #fff;
+        border: none;
+        padding: 6px 10px;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+
+      .product-info .btn-custom:hover {
+        background-color: #09e64b;
+      }
+
+      @media (max-width: 768px) {
+        .accordion-button {
+          background-size: contain; /* Asegura que la imagen de fondo cubra completamente */
+          background-position: center; /* Centra la imagen de fondo */
+          min-height: 60px; /* Ajusta la altura del botón acordeón */
+        }
+
+        .accordion-body {
+          padding: 5px; /* Reduce el espacio interno en pantallas pequeñas */
+        }
+
+        .menu-item {
+          flex-wrap: wrap; /* Permite que los elementos internos se apilen si es necesario */
+          text-align: center; /* Centra los elementos */
+        }
+
+        .product-image img {
+          max-width: 100%; /* Asegura que la imagen no supere el ancho disponible */
+          height: auto; /* Mantiene las proporciones */
+          margin-bottom: 8px; /* Agrega espacio debajo de la imagen */
+        }
+
+        .product-description {
+          font-size: 14px; /* Ajusta el tamaño del texto para pantallas pequeñas */
+          margin-bottom: 10px; /* Agrega espacio debajo de la descripción */
+        }
+
+        .product-info {
+          font-size: 14px; /* Ajusta el tamaño del precio y botones */
+        }
+
+        .product-info .btn {
+          font-size: 14px; /* Ajusta el tamaño del texto en el botón */
+          padding: 5px 10px; /* Reduce el tamaño del botón */
+        }
+      }
+    </style>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #48110d">
+      <div class="container-fluid">
+        <!-- Logo del restaurante -->
+        <a class="navbar-brand text-white" href="home.html">
+          <img
+            src="./img/logooo.png"
+            alt="Logotipo"
+            class="logo-img d-inline-block align-text-top"
+          />
+        </a>
+
+        <!-- Carrito e icono de menú hamburguesa -->
+        <div class="d-flex align-items-center">
+          <!-- Icono del carrito -->
+          <a href="#" class="text-white me-3"
+            ><i class="bi bi-cart4 fs-2"></i
+          ></a>
+
+          <!-- Botón de menú hamburguesa (visible solo en pantallas pequeñas) -->
+          <button
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasMenu"
+            aria-controls="offcanvasMenu"
+            class="d-md-none"
+            style="border: none; background: transparent; padding: 0"
+          >
+            <img
+              src="./img/hamburguesa-navbar.PNG"
+              alt="Menú"
+              style="width: 50px; height: 50px"
+            />
+          </button>
+
+          <!-- Offcanvas para el menú -->
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasMenu"
+            aria-labelledby="offcanvasMenuLabel"
+          >
+            <div class="offcanvas-header">
+              <h5
+                class="offcanvas-title d-flex align-items-center"
+                id="offcanvasMenuLabel"
+              >
+                <!-- Icono de persona antes del texto -->
+                <a href="#" class="text-decoration-none text-dark"
+                  >Inicio de sesión<i class="bi bi-person-fill ms-4"></i
+                ></a>
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Cerrar"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav">
+                <!-- Elemento de menú -->
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html"
+                    >Menú
+                    <i class="bi bi-three-dots-vertical align-middle ms-4"></i
+                  ></a>
+                </li>
+                <!-- Item de Bonos -->
+                <li class="nav-item">
+                  <a class="nav-link" href="#"
+                    >Bonos <i class="bi bi-cash-coin align-middle ms-4"></i
+                  ></a>
+                </li>
+                <!-- Artículo de método de entrega -->
+                <li class="nav-item">
+                  <a class="nav-link" href="#"
+                    >Método de Entrega - Domicilios<i
+                      class="bi bi-bicycle align-middle ms-4"
+                    ></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Línea de separación -->
+    <hr class="navbar-separator" />
+
+    <!-- Segundo navbar solo con la barra de búsqueda -->
+
+    <!-- Lista de hamburguesas -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #48110d">
+      <div class="container-fluid justify-content-center">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Buscar en el menú"
+            aria-label="Search"
+          />
+          <button type="submit" class="btn">
+            <i class="bi bi-search" style="font-size: 15px"></i>
+            <!-- Icono de lupa -->
+          </button>
+        </form>
+      </div>
+    </nav>
+    <!-- Línea de separación -->
+    <hr class="navbar-separator" />
+
+    <!-- Espaciador para evitar superposición del contenido principal -->
+
+    <!--carrusel de imagenes-->
+    <div
+      id="carouselExampleInterval"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="./img/carrusel-4.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="./img/carrusel-new.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="1990">
+          <img
+            src="./img/carrusel-navidad.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="1980">
+          <img src="./img/carrusel-1.jpg" class="d-block w-100" alt="..." />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="accordion-container">
+      <div class="container my-4">
+        <h1 class="text-center mb-4 menu-title">MENU</h1>
+        <div class="accordion" id="menuAccordion">
+          <!-- Primer acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="false"
+                aria-controls="collapseOne"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20TodoTerreno.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingOne"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/todo-terreno1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Todoterreno Callejera en combo</h5>
+                    <p>
+                      Hamburguesa de dos carnes de 125 g cada una 100% de res a
+                      la parrilla con salsa BBQ, tocineta, una tajada de queso
+                      tipo mozzarella, papas callejera, salsa blanca, salsa BBQ
+                      y mostaza en pan ajonjolí + papas medianas (Corral o
+                      cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom">Personalizar</a>
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/todo-terreno2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Todoterreno Tocineta en combo</h5>
+                    <p>
+                      Hamburguesa de dos carnes de 125 g cada una 100% de res a
+                      la parrilla con salsa BBQ, tocineta, queso mozzarella,
+                      pepinillos, verduras y salsas en pan ajonjolí + papas
+                      medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/todo-terreno3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Todoterreno Clásica en combo</h5>
+                    <p>
+                      Hamburguesa de dos carnes de 125 g cada una 100% de res a
+                      la parrilla con salsa BBQ, queso mozzarella, verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PE
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$41.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Segundo acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Corralazos.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del  acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Tercer acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Parrilla.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del tercer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Casera en combo</h5>
+                    <p>
+                      Hamburguesa de 165 g de carne 100% de res a la parrilla
+                      con salsa BBQ, queso americano, cebolla, tomate, lechuga y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PE
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/parrilla2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral VEK sencilla en combo</h5>
+                    <p>
+                      Hamburguesa de 115 g de proteína de origen vegetal,
+                      cebolla, tomate y lechuga en julianas en pan ajonjolí +
+                      papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/parrilla3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Pollo Parrillero en combo</h5>
+                    <p>
+                      Hamburguesa de 154 g de pechuga de pollo a la parrilla con
+                      salsa BBQ, tocineta, queso mozzarella, pepinillos,
+                      verduras y miel mostaza en pan ajonjolí + papas medianas
+                      (Corral o cascos) + b
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Cuarto acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Creaciones.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFour"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Quinto acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFive"
+                aria-expanded="false"
+                aria-controls="collapseFive"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Vaqueros.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseFive"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFive"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/vaqueros1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/vaquero2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/vaquero3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Sexto acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSix"
+                aria-expanded="false"
+                aria-controls="collapseSix"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Menu%20Infantil.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseSix"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingSix"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/corralito1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/corralito2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/corralito1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Septimo acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSeven"
+                aria-expanded="false"
+                aria-controls="collapseSeven"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Ensaladas.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseSeven"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingSeven"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Octavo acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseEighth"
+                aria-expanded="false"
+                aria-controls="collapseEighth"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Malteadas%20Navidad.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseEighth"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingEight"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/menu-acordeon3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Noveno acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseNine"
+                aria-expanded="false"
+                aria-controls="collapseNine"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Malteadas.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseNine"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingNine"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/malteada1.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/malteada2.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/malteada3.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Décimo acordeón -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTen">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTen"
+                aria-expanded="false"
+                aria-controls="collapseTen"
+                style="
+                  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20Bebidas.jpg?v=20241126-002');
+                "
+              ></button>
+            </h2>
+            <div
+              id="collapseTen"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTen"
+              data-bs-parent="#menuAccordion"
+            >
+              <div class="accordion-body">
+                <!-- Primer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/jugohit.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>BBQ Crunchy en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, cebollitas
+                      crujientes, una rodaja de tomate, lechuga en julianas,
+                      salsa BBQ y salsa blanca en pan ajonjolí. + papas medianas
+                      (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$43.900</p>
+                    <a href="pagina-destino.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Segundo producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/pepsi.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corralazo Granjera en Combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, tomate en
+                      rodajas, papa ripio, un huevo frito, salsas blanca y de
+                      tomate + papas medianas (Corral o cascos) + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$40.300</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+                <!-- Tercer producto dentro del primer acordeón -->
+                <div class="menu-item d-flex align-items-center">
+                  <div class="product-image me-3">
+                    <img
+                      src="./img/h2o.jpg"
+                      alt="Imagen del producto"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="product-description flex-grow-1 text-center">
+                    <h5>Corral en combo</h5>
+                    <p>
+                      Hamburguesa de 125 g de carne 100% de res, con verduras y
+                      salsas en pan ajonjolí + papas medianas (Corral o cascos)
+                      + bebida PET
+                    </p>
+                  </div>
+                  <div class="product-info text-end">
+                    <p class="price mb-2">$9.99</p>
+                    <a href="constr.html" class="btn btn-custom"
+                      >Personalizar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbot-image">
+      <img
+        src="./img/sopote-logo.png"
+        alt="Chatbot"
+        class="img-fluid"
+        style="cursor: pointer"
+        data-bs-toggle="modal"
+        data-bs-target="#chatbotModal"
+      />
+    </div>
+
+    <!-- Modal para el soporte del Chatbot -->
+    <div
+      class="modal fade"
+      id="chatbotModal"
+      tabindex="-1"
+      aria-labelledby="chatbotModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="chatbotModalContent">
+          <!-- Cabecera del modal como área de arrastre -->
+          <div class="chatbot-header-image-container" id="chatbotModalHeader">
+            <img
+              src="./img/logooo.png"
+              alt="Soporte Chatbot"
+              class="chatbot-header-image"
+            />
+          </div>
+
+          <div class="modal-body">
+            <!-- Contenido del chat -->
+            <div class="chat-content"></div>
+
+            <!-- Campo de entrada de mensaje -->
+            <div class="chat-input mt-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Escribe tu mensaje..."
+                id="userInput"
+              />
+              <button
+                class="btn btn-primary chat-send-btn mt-2"
+                id="sendMessage"
+              >
+                Enviar
+              </button>
+
+              <!-- Panel de emojis -->
+              <figure class="emoji-trigger">
+                <button id="toggleEmojiPanel" class="emoji-btn">😊</button>
+                <div id="emojiPanel" class="emoji-panel hidden">
+                  <span class="emoji">😀</span>
+                  <span class="emoji">😂</span>
+                  <span class="emoji">😢</span>
+                  <span class="emoji">😮</span>
+                  <span class="emoji">😍</span>
+                  <span class="emoji">😎</span>
+                  <span class="emoji">👷🏽</span>
+                  <span class="emoji">🍔</span>
+                  <span class="emoji">🛸</span>
+                  <span class="emoji">🍕</span>
+                  <span class="emoji">🌭</span>
+                  <span class="emoji">🍹</span>
+                  <span class="emoji">🎂</span>
+                  <span class="emoji">😫</span>
+                  <span class="emoji">🤬</span>
+                  <span class="emoji">🍺</span>
+                  <span class="emoji">🍾</span>
+                  <span class="emoji">🍻</span>
+                  <span class="emoji">❤️</span>
+                  <span class="emoji">🍩</span>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--footer-->
+
+    <footer class="custom-footer text-center text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <h5>Todos los derechos reservados</h5>
+            <p>Copyright &copy; 2024 - Restaurante El Corral</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Esto es una copia de la pagina ofical El corral</h5>
+            <p>
+              <a href="#" class="text-white">Carlos Gomez</a>
+            </p>
+            <p>Powered by <a href="#" class="text-white">Bootstrap</a></p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Contacto</h5>
+            <a href="#" class="text-white">Contacto</a> |
+            <a href="#" class="text-white">Política de Privacidad</a> |
+            <a
+              href="https://www.bing.com/maps/traffic?setlang=es-co&FORM=Trafi2&cvid=b7dd9e62c0144dd48be924926d12f432&ocid=winp2fp&cp=4.638708%7E-74.098445&lvl=14.4&incidentid=34205954256012000&incidenttype=5&incidentloc=7.888794%7E-72.494619&detectedloc=7.891897678375244%7E-72.5006332397461&detectedlocacc=1142.6341552734375&ei=7"
+              class="text-white"
+              >Mapa del Sitio</a
+            >
+            | <a href="#" class="text-white">Términos y Condiciones</a> |
+            <a href="#" class="text-white">Ayuda</a>
+          </div>
+        </div>
+        <div class="social-media">
+          <h5>Redes Sociales</h5>
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-twitter-x"></i>
+          <i class="bi bi-youtube"></i>
+          <i class="bi bi-tiktok"></i>
+          <i class="bi bi-whatsapp"></i>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript Bundle (incluye Popper.js) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./chatbot.js"></script>
+    <script src="./script.js"></script>
+   
+  </body>
+</html>
