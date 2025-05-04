@@ -441,6 +441,30 @@
 
 
 
+@media (max-width: 480px) {
+  .logo-img {
+    width: 150px;
+  }
+
+  .accordion-button {
+    font-size: 14px;
+    min-height: 120px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo-img {
+    width: 200px;
+  }
+
+  .form-control {
+    width: 200px;
+  }
+}
 
 
 
