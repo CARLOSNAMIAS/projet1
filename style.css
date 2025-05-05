@@ -144,7 +144,7 @@
   background-position: center; /* Centra la imagen */
   color: #f1f1f1; /* Ajusta el color del texto */
   font-weight: bold;
-  min-height: 160px; /* Ajusta según el diseño */
+  min-height: 170px; /* Ajusta según el diseño */
   display: flex;
   align-items: center;
   justify-content: center;
