@@ -1,30 +1,31 @@
-
-
-/* Ajuste para los botones de acordeón con imágenes de fondo */
 /* Estilos del navbar */
 .navbar {
-  background-color: #48110d; /* Color de fondo */
+  background-color: #48110d;
+  /* Color de fondo */
   padding: 10px 20px;
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #ffffff; /* Color blanco */
+  color: #ffffff;
+  /* Color blanco */
 }
 
 .navbar-brand:hover {
-  color: #ffd700; /* Dorado al pasar el mouse */
+  color: #ffd700;
+  /* Dorado al pasar el mouse */
 }
 
 /* Barra de búsqueda */
 .form-control {
-  width: 150px; /* Tamaño fijo para que se vea ordenada */
+  width: 150px;
+  /* Tamaño fijo para que se vea ordenada */
   border: none;
   border-radius: 20px;
 }
 
 .btn-outline-light {
-  border:1px solid #f1ee0c;
+  border: 1px solid #f1ee0c;
   color: #dfe209;
   background-position-x: left;
 }
@@ -36,76 +37,95 @@
 
 /* Estilos personalizados para el logo */
 .logo-img {
-  width: 250px; /* Cambia el ancho según lo que prefieras */
-  height: auto; /* Mantiene la proporción del logo */
-  max-height: 160px; /* Ajusta la altura máxima */
-  object-fit: contain; /* Asegura que la imagen se ajuste bien */
+  width: 250px;
+  /* Cambia el ancho según lo que prefieras */
+  height: auto;
+  /* Mantiene la proporción del logo */
+  max-height: 160px;
+  /* Ajusta la altura máxima */
+  object-fit: contain;
+  /* Asegura que la imagen se ajuste bien */
 }
 
 
 /* Estilos para el botón de menú hamburguesa */
 .navbar-toggler {
-  border: none; /* Sin borde */
-  background-color: transparent; /* Fondo transparente */
+  border: none;
+  /* Sin borde */
+  background-color: transparent;
+  /* Fondo transparente */
   padding: 8px;
 }
 
 /* Estilos para el icono del menú hamburguesa */
 .navbar-toggler-icon {
-  background-image: url("./img/hamburguesa-navbar.PNG"); /* Icono de hamburguesa en blanco */
-  background-size: 50px 50px; /* Tamaño del icono */
+  background-image: url("./img/hamburguesa-navbar.PNG");
+  /* Icono de hamburguesa en blanco */
+  background-size: 50px 50px;
+  /* Tamaño del icono */
   background-repeat: no-repeat;
   background-position: center;
-  filter: invert(100%); /* Cambia el color del icono a blanco */
+  filter: invert(100%);
+  /* Cambia el color del icono a blanco */
 }
 
 /* Offcanvas estilos */
 .offcanvas {
-  background-color: #2e0e0c; /* Color de fondo para el offcanvas */
-  color: #973216; /* Texto en blanco */
+  background-color: #2e0e0c;
+  /* Color de fondo para el offcanvas */
+  color: #973216;
+  /* Texto en blanco */
 }
 
 .offcanvas .offcanvas-title {
   font-weight: bold;
-  color: #fbff1f; /* Título dorado */
+  color: #fbff1f;
+  /* Título dorado */
 }
 
 .offcanvas .navbar-nav .nav-link {
-  color: #48110d; /* Color blanco para los enlaces */
+  color: #48110d;
+  /* Color blanco para los enlaces */
 }
 
 .offcanvas .navbar-nav .nav-link:hover {
-  color: #ffd700; /* Color dorado al pasar el ratón */
+  color: #ffd700;
+  /* Color dorado al pasar el ratón */
 }
 
 /* estilo para la lupa de busqueda */
 .btn {
-  background-color: transparent; /* Fondo transparente */
-  border: none; /* Sin borde */
-  padding: 0; /* Sin padding */
+  background-color: transparent;
+  /* Fondo transparente */
+  border: none;
+  /* Sin borde */
+  padding: 0;
+  /* Sin padding */
 }
 
 .btn i {
   color: rgb(237, 215, 18);
-   /* Cambia el color del ícono según tus preferencias */
+  /* Cambia el color del ícono según tus preferencias */
 }
 
 
 /* Ajustes específicos para el segundo navbar */
 .navbar-expand-lg {
-  padding: 10px 20px; /* Un padding más pequeño para diferenciarlo */
+  padding: 10px 20px;
+  /* Un padding más pequeño para diferenciarlo */
 }
 
-
-
-/* Estilo para la línea de separación */
 /* Estilo para la línea de separación */
 .navbar-separator {
   border: none;
-  height: 1px; /* Grosor de la línea */
-  background-color: #ffffff; /* Color de la línea */
-  margin: 0; /* Sin margen extra */
-  z-index: 100; /* Asegura que esté encima de otros elementos */
+  height: 1px;
+  /* Grosor de la línea */
+  background-color: #ffffff;
+  /* Color de la línea */
+  margin: 0;
+  /* Sin margen extra */
+  z-index: 100;
+  /* Asegura que esté encima de otros elementos */
 }
 
 
@@ -113,65 +133,76 @@
 /*stilo menu/* */
 
 .menu-title {
-  color: #48110d; /* Cambia este color según tus necesidades */
+  color: #48110d;
+  font-size: 24px;
+  margin: 9px 0;
+  padding: 0px;
 }
-
-
-
 
 /* Estilos generales */
-
-
 .accordion-container {
-  max-width: 100%; /* Aumenta el ancho según tu preferencia */
-  width: 100%; /* Asegura que ocupe todo el espacio disponible */
-  margin: auto; /* Centra el acordeón */
-  padding: 1px;
+  width: 100%;
+  padding: 10px 10px;
+  background-color: #f9f9f9;
+  /* Opcional, para ver el área */
 }
+
+
+
+
 
 
 .accordion-item {
-  margin-bottom: 1px; /* Ajusta el valor para cambiar la separación */
+  margin-bottom: 0.8px;
+  /* Ajusta el valor para cambiar la separación */
 }
-
-
 
 /* Ajuste para los botones de acordeón con imágenes de fondo */
 .accordion-button {
   background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20TodoTerreno.jpg?v=20240902-002');
-  background-size: contain; /* Ajusta la imagen para que se vea completa */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  background-position: center; /* Centra la imagen */
-  color: #f1f1f1; /* Ajusta el color del texto */
+  background-size: contain;
+  /* Ajusta la imagen para que se vea completa */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-position: center;
+  /* Centra la imagen */
+  color: #f1f1f1;
+  /* Ajusta el color del texto */
   font-weight: bold;
-  min-height: 170px; /* Ajusta según el diseño */
+  min-height: 190px;
+  /* Ajusta según el diseño */
   display: flex;
   align-items: center;
   justify-content: center;
   text-shadow: 1px 1px 1px rgba(72, 17, 13, 0.7);
-  
+
 }
-
-
 /* Estilo de los productos */
 .menu-item {
   padding: 4px 0;
   border-bottom: 1px solid #a4a2a2;
 }
 
-
 /* Botón personalizado */
 
 .menu-item .btn-custom {
   font-weight: bold;
-  background-color: none; /* Color de fondo */
-  color: #48110d; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 2px; /* Bordes redondeados */
-  padding: 6px 4px; /* Espaciado interno */
-  font-size: 14px; /* Tamaño de la fuente */
-  cursor: pointer; /* Cambiar el cursor al pasar el ratón */
-  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves para el fondo y transformaciones */
+  background-color: none;
+  /* Color de fondo */
+  color: #48110d;
+  /* Color del texto */
+  border: none;
+  /* Sin borde */
+  border-radius: 2px;
+  /* Bordes redondeados */
+  padding: 6px 4px;
+  /* Espaciado interno */
+  font-size: 14px;
+  /* Tamaño de la fuente */
+  cursor: pointer;
+  /* Cambiar el cursor al pasar el ratón */
+  transition: background-color 0.3s, transform 0.2s;
+  /* Transiciones suaves para el fondo y transformaciones */
 }
 
 
@@ -183,12 +214,14 @@
 /* Estilo para la imagen del chatbot */
 .chatbot-image img {
   width: 60px;
-  height: 60px; 
+  height: 60px;
   border-radius: 50%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
   position: fixed;
-  bottom: 20px; /* Asegura que esté a 20px de la parte inferior */
-  right: 20px; /* Asegura que esté a 20px desde el lado derecho */
+  bottom: 20px;
+  /* Asegura que esté a 20px de la parte inferior */
+  right: 20px;
+  /* Asegura que esté a 20px desde el lado derecho */
   z-index: 9999;
   transition: transform 0.3s ease;
 }
@@ -196,54 +229,68 @@
 /* Estilamos el contenedor para centrar la imagen */
 .chatbot-header-image-container {
   display: flex;
-  justify-content: center; /* Centrado horizontal */
-  align-items: center; /* Centrado vertical */
+  justify-content: center;
+  /* Centrado horizontal */
+  align-items: center;
+  /* Centrado vertical */
   width: 100%;
-  height: 100px; /* Altura para el contenedor */
-  background-color: #48110d; /* Color de fondo para destacar */
-  
+  height: 100px;
+  /* Altura para el contenedor */
+  background-color: #48110d;
+  /* Color de fondo para destacar */
+
 }
 
 /* Estilamos la imagen dentro del contenedor */
 .chatbot-header-image {
   width: 360px;
   height: 100px;
-  border-radius: 0%; /* Hace la imagen completamente circular */
-  background-color: #00000000; /* Color transparente o personalizado */
+  border-radius: 0%;
+  /* Hace la imagen completamente circular */
+  background-color: #00000000;
+  /* Color transparente o personalizado */
 }
 
 /* Estilado para el modal */
 .modal {
   background-color: #0000006d;
-  position: fixed; /* Fijar el modal en la pantalla */
-  bottom: 0; /* Asegura que el modal esté alineado en la parte inferior */
-  left: 0; /* Asegura que el modal esté alineado a la izquierda */
-  margin: 0; /* Elimina márgenes */
-  z-index: 9999; /* Coloca el modal por encima de otros elementos */
-  
-  
+  position: fixed;
+  /* Fijar el modal en la pantalla */
+  bottom: 0;
+  /* Asegura que el modal esté alineado en la parte inferior */
+  left: 0;
+  /* Asegura que el modal esté alineado a la izquierda */
+  margin: 0;
+  /* Elimina márgenes */
+  z-index: 9999;
+  /* Coloca el modal por encima de otros elementos */
+
+
 }
 
 /* Estilado para el contenedor principal del modal */
 .modal-dialog {
   position: relative;
   width: 100%;
-  max-width: 200px; /* Ajusta el tamaño del modal según el diseño */
-  
+  max-width: 200px;
+  /* Ajusta el tamaño del modal según el diseño */
+
 }
 
 /* Estilado del contenido modal */
 .modal-content {
-  border-radius: 10px 10px 0 0; /* Bordes redondeados en la parte superior */
-  box-shadow: 0px -4px 10px rgba(22, 22, 22, 0.397); /* Sombra para efecto flotante */
-  
+  border-radius: 10px 10px 0 0;
+  /* Bordes redondeados en la parte superior */
+  box-shadow: 0px -4px 10px rgba(22, 22, 22, 0.397);
+  /* Sombra para efecto flotante */
+
 }
 
 /* Estilado interno del modal */
 .modal-body {
   padding: 10px;
   background-color: #ecb78b;
-  
+
 }
 
 /* Contenedor para mensajes del chat */
@@ -317,7 +364,8 @@
 
 .emoji-panel {
   position: absolute;
-  top: 100%; /* Muestra debajo del botón */
+  top: 100%;
+  /* Muestra debajo del botón */
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.9);
@@ -347,12 +395,14 @@
 
 
 #chatbotModalContent {
-  position: absolute; /* Permite mover el modal */
+  position: absolute;
+  /* Permite mover el modal */
   cursor: default;
 }
 
 #chatbotModalHeader {
-  cursor: move; /* Cursor indica que se puede arrastrar */
+  cursor: move;
+  /* Cursor indica que se puede arrastrar */
 }
 
 
@@ -361,54 +411,71 @@
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
+
   /* Ajustar la imagen flotante del chatbot */
   .chatbot-image img {
     width: 60px;
     height: 60px;
-    bottom: 10px; /* Reduce el espacio desde la parte inferior */
-    right: 10px;  /* Reduce el espacio desde el lado derecho */
+    bottom: 10px;
+    /* Reduce el espacio desde la parte inferior */
+    right: 10px;
+    /* Reduce el espacio desde el lado derecho */
   }
 
   /* Ajustar el modal */
   .modal {
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo un poco más oscuro */
-    bottom: 0; /* Mantiene el modal pegado abajo */
-    left: 0; /* Asegura que ocupe toda la pantalla */
-    width: 100%; /* Ocupa todo el ancho disponible */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Fondo un poco más oscuro */
+    bottom: 0;
+    /* Mantiene el modal pegado abajo */
+    left: 0;
+    /* Asegura que ocupe toda la pantalla */
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
     margin: 0;
   }
 
   /* Ajustar el contenido del modal */
   .modal-dialog {
-    max-width: 100%; /* Ocupa todo el ancho */
-    margin: 0; /* Elimina márgenes laterales */
-    border-radius: 0; /* Elimina los bordes redondeados */
+    max-width: 100%;
+    /* Ocupa todo el ancho */
+    margin: 0;
+    /* Elimina márgenes laterales */
+    border-radius: 0;
+    /* Elimina los bordes redondeados */
   }
 
   .modal-content {
-    border-radius: 0; /* Elimina los bordes redondeados */
+    border-radius: 0;
+    /* Elimina los bordes redondeados */
   }
 
   /* Ajustar el cuerpo del modal */
   .modal-body {
-    padding: 15px; /* Reduce el padding */
+    padding: 15px;
+    /* Reduce el padding */
   }
 
   /* Ajustar la caja de mensajes */
   .chat-content {
-    max-height: 200px; /* Reduce la altura máxima */
-    padding: 8px; /* Reduce el padding */
+    max-height: 200px;
+    /* Reduce la altura máxima */
+    padding: 8px;
+    /* Reduce el padding */
   }
 
   /* Ajustar la caja de entrada */
   .chat-input {
-    flex-direction: column; /* Apila los elementos verticalmente */
-    gap: 5px; /* Reduce el espacio entre los elementos */
+    flex-direction: column;
+    /* Apila los elementos verticalmente */
+    gap: 5px;
+    /* Reduce el espacio entre los elementos */
   }
 
   /* Ajustar el tamaño de los botones de envío en pantallas pequeñas */
   .chat-send-btn {
-    padding: 8px 8px; /* Reducir el tamaño del botón */
+    padding: 8px 8px;
+    /* Reducir el tamaño del botón */
     font-size: 14px;
   }
 }
@@ -419,26 +486,29 @@
 /*footer*/
 
 .custom-footer {
-  background-color: #48110d; /* Cambia este color según tus preferencias */
+  background-color: #48110d;
+  /* Cambia este color según tus preferencias */
 }
 
 .custom-footer a {
-  transition: color 0.3s ease; /* Transición suave para el cambio de color */
+  transition: color 0.3s ease;
+  /* Transición suave para el cambio de color */
 }
 
 .custom-footer a:hover {
-  color: #ffc107; /* Color al pasar el cursor, puedes cambiarlo según tu diseño */
+  color: #ffc107;
+  /* Color al pasar el cursor, puedes cambiarlo según tu diseño */
 }
 
 .custom-footer h5 {
-  font-weight: bold; /* Estilo de fuente para los títulos */
+  font-weight: bold;
+  /* Estilo de fuente para los títulos */
 }
 
 .social-media h5 {
-  margin-bottom: 10px; /* Espacio entre el título y los enlaces de redes sociales */
+  margin-bottom: 10px;
+  /* Espacio entre el título y los enlaces de redes sociales */
 }
-
-
 
 
 @media (max-width: 480px) {
@@ -465,6 +535,9 @@
     width: 200px;
   }
 }
+
+
+
 
 
 
