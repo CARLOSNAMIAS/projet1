@@ -133,11 +133,21 @@
 /*stilo menu/* */
 
 .menu-title {
+  margin: 0;              /* Elimina margen por defecto */
+  padding: none;   /* Espaciado interno si deseas */
+  font-size: 1rem;
+  text-align: center;
   color: #48110d;
-  font-size: 24px;
-  margin: 9px 0;
-  padding: 0px;
 }
+
+@media (min-width: 768px) {
+  .menu-title {
+    font-size: 1rem;
+    text-align: left;
+    padding-left: 1rem;
+  }
+}
+
 
 /* Estilos generales */
 .accordion-container {
