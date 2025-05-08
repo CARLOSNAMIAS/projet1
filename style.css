@@ -133,18 +133,18 @@
 /*stilo menu/* */
 
 .menu-title {
-  margin: 0;              /* Elimina margen por defecto */
-  padding: none;   /* Espaciado interno si deseas */
-  font-size: 1rem;
+  font-size: 0.6rem; /* Tamaño pequeño por defecto (pantallas pequeñas) */
+  margin-bottom: 0.5rem;
   text-align: center;
   color: #48110d;
 }
 
 @media (min-width: 768px) {
   .menu-title {
-    font-size: 1rem;
+    font-size: 1.2rem;  /* Más grande en pantallas medianas o mayores */
     text-align: left;
     padding-left: 1rem;
+    margin-bottom: 1.5rem;
   }
 }
 
