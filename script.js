@@ -231,3 +231,280 @@ document.addEventListener("DOMContentLoaded", function () {
       document.removeEventListener("mouseup", onMouseUp);
     };
   });
+
+
+
+
+
+
+
+
+
+
+  // Carrito de Compras para Hamburguesas
+class CarritoCompras {
+    constructor() {
+        this.items = [];
+        this.total = 0;
+        this.inicializar();
+    }
+
+    inicializar() {
+        // Cargar carrito desde localStorage si existe
+        const carritoGuardado = localStorage.getItem('carrito');
+        if (carritoGuardado) {
+            this.items = JSON.parse(carritoGuardado);
+            this.calcularTotal();
+        }
+
+        // Agregar event listeners a todos los botones "Personalizar"
+        this.agregarEventListeners();
+        
+        // Crear el HTML del carrito si no existe
+        this.crearElementosCarrito();
+        
+        // Actualizar la vista inicial
+        this.actualizarVista();
+    }
+
+    agregarEventListeners() {
+        // Seleccionar todos los botones "Personalizar"
+        const botonesPersonalizar = document.querySelectorAll('.btn-custom');
+        
+        botonesPersonalizar.forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.agregarProducto(e.target);
+            });
+        });
+    }
+
+    agregarProducto(boton) {
+        // Obtener el contenedor del producto
+        const menuItem = boton.closest('.menu-item');
+        
+        // Extraer información del producto
+        const nombre = menuItem.querySelector('h5').textContent.trim();
+        const descripcion = menuItem.querySelector('p').textContent.trim();
+        const precioTexto = menuItem.querySelector('.price').textContent.trim();
+        const precio = this.extraerPrecio(precioTexto);
+        const imagen = menuItem.querySelector('img').src;
+
+        // Crear objeto producto
+        const producto = {
+            id: this.generarId(nombre),
+            nombre: nombre,
+            descripcion: descripcion,
+            precio: precio,
+            imagen: imagen,
+            cantidad: 1
+        };
+
+        // Verificar si el producto ya existe en el carrito
+        const productoExistente = this.items.find(item => item.id === producto.id);
+        
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            this.items.push(producto);
+        }
+
+        // Actualizar total y vista
+        this.calcularTotal();
+        this.actualizarVista();
+        this.guardarCarrito();
+        
+        // Mostrar mensaje de confirmación
+        this.mostrarMensajeAgregado(producto.nombre);
+    }
+
+    extraerPrecio(precioTexto) {
+        // Extraer solo los números del precio (ej: "$43.900" -> 43900)
+        return parseInt(precioTexto.replace(/[^\d]/g, ''));
+    }
+
+    generarId(nombre) {
+        // Generar un ID único basado en el nombre
+        return nombre.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+    }
+
+    eliminarProducto(id) {
+        this.items = this.items.filter(item => item.id !== id);
+        this.calcularTotal();
+        this.actualizarVista();
+        this.guardarCarrito();
+    }
+
+    actualizarCantidad(id, nuevaCantidad) {
+        const producto = this.items.find(item => item.id === id);
+        if (producto) {
+            if (nuevaCantidad <= 0) {
+                this.eliminarProducto(id);
+            } else {
+                producto.cantidad = nuevaCantidad;
+                this.calcularTotal();
+                this.actualizarVista();
+                this.guardarCarrito();
+            }
+        }
+    }
+
+    calcularTotal() {
+        this.total = this.items.reduce((suma, item) => {
+            return suma + (item.precio * item.cantidad);
+        }, 0);
+    }
+
+    formatearPrecio(precio) {
+        return new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0
+        }).format(precio);
+    }
+
+    crearElementosCarrito() {
+        // Crear botón del carrito flotante si no existe
+        if (!document.getElementById('carrito-flotante')) {
+            const carritoFlotante = document.createElement('div');
+            carritoFlotante.id = 'carrito-flotante';
+            carritoFlotante.className = 'carrito-flotante';
+            carritoFlotante.innerHTML = `
+                <button class="btn btn-primary carrito-btn" data-bs-toggle="modal" data-bs-target="#carritoModal">
+                    <i class="bi bi-cart4"></i>
+                    <span id="carrito-contador">0</span>
+                </button>
+            `;
+            document.body.appendChild(carritoFlotante);
+        }
+
+        // Crear modal del carrito si no existe
+        if (!document.getElementById('carritoModal')) {
+            const modalCarrito = document.createElement('div');
+            modalCarrito.innerHTML = `
+                <div class="modal fade" id="carritoModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">
+                                    <i class="bi bi-cart4 me-2"></i>
+                                    Tu Carrito de Compras
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="carrito-items"></div>
+                                <div class="carrito-total mt-3">
+                                    <h4>Total: <span id="carrito-total">$0</span></h4>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Comprando</button>
+                                <button type="button" class="btn btn-success" onclick="carrito.procederPago()">Proceder al Pago</button>
+                                <button type="button" class="btn btn-danger" onclick="carrito.limpiarCarrito()">Limpiar Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modalCarrito);
+        }
+    }
+
+    actualizarVista() {
+        // Actualizar contador del carrito flotante
+        const contador = document.getElementById('carrito-contador');
+        if (contador) {
+            const totalItems = this.items.reduce((suma, item) => suma + item.cantidad, 0);
+            contador.textContent = totalItems;
+        }
+
+        // Actualizar items del carrito
+        const carritoItems = document.getElementById('carrito-items');
+        if (carritoItems) {
+            if (this.items.length === 0) {
+                carritoItems.innerHTML = '<p class="text-center">Tu carrito está vacío</p>';
+            } else {
+                carritoItems.innerHTML = this.items.map(item => `
+                    <div class="carrito-item d-flex align-items-center mb-3 p-3 border rounded">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="carrito-item-img me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div class="flex-grow-1">
+                            <h6>${item.nombre}</h6>
+                            <p class="text-muted small mb-1">${item.descripcion.substring(0, 100)}...</p>
+                            <p class="mb-0"><strong>${this.formatearPrecio(item.precio)}</strong></p>
+                        </div>
+                        <div class="cantidad-controls">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad - 1})">-</button>
+                            <span class="mx-2">${item.cantidad}</span>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad + 1})">+</button>
+                        </div>
+                        <button class="btn btn-sm btn-danger ms-2" onclick="carrito.eliminarProducto('${item.id}')">🗑️</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Actualizar total
+        const totalElement = document.getElementById('carrito-total');
+        if (totalElement) {
+            totalElement.textContent = this.formatearPrecio(this.total);
+        }
+    }
+
+    mostrarMensajeAgregado(nombreProducto) {
+        // Crear toast de notificación
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.innerHTML = `
+            <div class="alert alert-success toast-content">
+                ✅ ${nombreProducto} agregado al carrito
+            </div>
+        `;
+        toast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            animation: slideIn 0.3s ease-out;
+        `;
+        
+        document.body.appendChild(toast);
+        
+        // Remover después de 3 segundos
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 300);
+        }, 3000);
+    }
+
+    guardarCarrito() {
+        localStorage.setItem('carrito', JSON.stringify(this.items));
+    }
+
+    limpiarCarrito() {
+        this.items = [];
+        this.total = 0;
+        this.actualizarVista();
+        this.guardarCarrito();
+    }
+
+    procederPago() {
+        if (this.items.length === 0) {
+            alert('Tu carrito está vacío');
+            return;
+        }
+        
+        // Aquí puedes integrar con tu sistema de pago
+        alert(`Procesando pago por ${this.formatearPrecio(this.total)}\n\nTotal de items: ${this.items.length}`);
+        console.log('Items del carrito:', this.items);
+    }
+}
+
+// Inicializar el carrito cuando se carga la página
+let carrito;
+document.addEventListener('DOMContentLoaded', function() {
+    carrito = new CarritoCompras();
+});
+
