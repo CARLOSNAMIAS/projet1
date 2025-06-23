@@ -1,3 +1,4 @@
+
 /* ===========================================
    VARIABLES CSS (Opcional - para mejor mantenimiento)
    =========================================== */
@@ -161,24 +162,39 @@
   }
 }
 
+
 /* ===========================================
-   ACORDEÓN
+   ACORDEÓN / SECCIÓN DE PRODUCTOS
    =========================================== */
-.accordion-container {
+/* Reset básico para que nada interfiera */
+
+body, html {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  padding: 10px;
+  overflow-x: hidden;
+}
+
+
+.accordion-container {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
   background-color: var(--secondary-color);
+  overflow: hidden;
 }
 
 .accordion-item {
   margin-bottom: 0.8px;
 }
 
+
 .accordion-button {
   background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20TodoTerreno.jpg?v=20240902-002');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #000; /* Fondo de relleno detrás de la imagen */
   color: var(--text-light);
   font-weight: bold;
   min-height: 190px;
@@ -186,7 +202,15 @@
   align-items: center;
   justify-content: center;
   text-shadow: 1px 1px 1px rgba(72, 17, 13, 0.7);
+  padding-left: 0;  /* Elimina margen interno */
+  padding-right: 0;
 }
+
+
+
+
+
+
 
 /* ===========================================
    ELEMENTOS DEL MENÚ
@@ -207,7 +231,6 @@
   cursor: pointer;
   transition: var(--transition-smooth);
 }
-
 /* ===========================================
    CHATBOT - IMAGEN FLOTANTE
    =========================================== */
