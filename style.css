@@ -1,315 +1,287 @@
-/* Estilos del navbar */
+/* ===========================================
+   VARIABLES CSS (Opcional - para mejor mantenimiento)
+   =========================================== */
+:root {
+  --primary-bg: #48110d;
+  --secondary-bg: #2e0e0c;
+  --accent-color: #ffd700;
+  --search-accent: #f1ee0c;
+  --text-primary: #ffffff;
+  --text-secondary: #973216;
+  --text-accent: #fbff1f;
+}
+
+/* ===========================================
+   NAVBAR PRINCIPAL
+   =========================================== */
+
+
 .navbar {
-  background-color: #48110d;
-  /* Color de fondo */
+  background-color: var(--primary-bg);
   padding: 10px 20px;
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #ffffff;
-  /* Color blanco */
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
-  color: #ffd700;
-  /* Dorado al pasar el mouse */
+  color: var(--accent-color);
 }
 
-/* Barra de búsqueda */
+/* ===========================================
+   ELEMENTOS DE BÚSQUEDA
+   =========================================== */
 .form-control {
   width: 150px;
-  /* Tamaño fijo para que se vea ordenada */
   border: none;
   border-radius: 20px;
 }
 
 .btn-outline-light {
-  border: 1px solid #f1ee0c;
+  border: 1px solid var(--search-accent);
   color: #dfe209;
   background-position-x: left;
 }
 
-/* Icono del carrito */
-.bi-cart {
-  font-size: 10rem;
-}
-
-/* Estilos personalizados para el logo */
-.logo-img {
-  width: 250px;
-  /* Cambia el ancho según lo que prefieras */
-  height: auto;
-  /* Mantiene la proporción del logo */
-  max-height: 160px;
-  /* Ajusta la altura máxima */
-  object-fit: contain;
-  /* Asegura que la imagen se ajuste bien */
-}
-
-
-/* Estilos para el botón de menú hamburguesa */
-.navbar-toggler {
-  border: none;
-  /* Sin borde */
-  background-color: transparent;
-  /* Fondo transparente */
-  padding: 8px;
-}
-
-/* Estilos para el icono del menú hamburguesa */
-.navbar-toggler-icon {
-  background-image: url("./img/hamburguesa-navbar.PNG");
-  /* Icono de hamburguesa en blanco */
-  background-size: 50px 50px;
-  /* Tamaño del icono */
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: invert(100%);
-  /* Cambia el color del icono a blanco */
-}
-
-/* Offcanvas estilos */
-.offcanvas {
-  background-color: #2e0e0c;
-  /* Color de fondo para el offcanvas */
-  color: #973216;
-  /* Texto en blanco */
-}
-
-.offcanvas .offcanvas-title {
-  font-weight: bold;
-  color: #fbff1f;
-  /* Título dorado */
-}
-
-.offcanvas .navbar-nav .nav-link {
-  color: #48110d;
-  /* Color blanco para los enlaces */
-}
-
-.offcanvas .navbar-nav .nav-link:hover {
-  color: #ffd700;
-  /* Color dorado al pasar el ratón */
-}
-
-/* estilo para la lupa de busqueda */
 .btn {
   background-color: transparent;
-  /* Fondo transparente */
   border: none;
-  /* Sin borde */
   padding: 0;
-  /* Sin padding */
 }
 
 .btn i {
   color: rgb(237, 215, 18);
-  /* Cambia el color del ícono según tus preferencias */
 }
 
+/* ===========================================
+   LOGO Y ICONOS
+   =========================================== */
+.logo-img {
+  width: 250px;
+  height: auto;
+  max-height: 160px;
+  object-fit: contain;
+}
 
-/* Ajustes específicos para el segundo navbar */
+.bi-cart {
+  font-size: 10rem;
+}
+
+/* ===========================================
+   MENÚ HAMBURGUESA
+   =========================================== */
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+  padding: 8px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("./img/hamburguesa-navbar.PNG");
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(100%);
+}
+
+/* ===========================================
+   OFFCANVAS (MENÚ LATERAL)
+   =========================================== */
+.offcanvas {
+  background-color: var(--secondary-bg);
+  color: var(--text-secondary);
+}
+
+.offcanvas .offcanvas-title {
+  font-weight: bold;
+  color: var(--text-accent);
+}
+
+.offcanvas .navbar-nav .nav-link {
+  color: var(--primary-bg);
+  transition: color 0.3s ease;
+}
+
+.offcanvas .navbar-nav .nav-link:hover {
+  color: var(--accent-color);
+}
+
+/* ===========================================
+   ELEMENTOS ADICIONALES
+   =========================================== */
 .navbar-expand-lg {
   padding: 10px 20px;
-  /* Un padding más pequeño para diferenciarlo */
 }
 
-/* Estilo para la línea de separación */
 .navbar-separator {
   border: none;
   height: 1px;
-  /* Grosor de la línea */
-  background-color: #ffffff;
-  /* Color de la línea */
+  background-color: var(--text-primary);
   margin: 0;
-  /* Sin margen extra */
   z-index: 100;
-  /* Asegura que esté encima de otros elementos */
 }
 
 
+/* ===========================================
+   VARIABLES CSS
+   =========================================== */
+:root {
+  --primary-color: #48110d;
+  --secondary-color: #f9f9f9;
+  --accent-color: #ecb78b;
+  --text-light: #f1f1f1;
+  --text-dark: #48110d;
+  --border-color: #a4a2a2;
+  --shadow-color: rgba(0, 0, 0, 0.169);
+  --success-color: #45a049;
+  --modal-bg: rgba(0, 0, 0, 0.427);
+  --transition-smooth: all 0.3s ease;
+  --transition-quick: all 0.2s ease;
+}
 
-/*stilo menu/* */
-
+/* ===========================================
+   TÍTULO DEL MENÚ
+   =========================================== */
 .menu-title {
-  margin: 1px;              /* Elimina margen por defecto */
-  padding: 0;   /* Espaciado interno si deseas */
+  margin: 1px 0;
+  padding: 0;
   font-size: 1rem;
   text-align: center;
-  color: #48110d; /* Color del texto */
+  color: var(--text-dark);
 }
 
 @media (min-width: 768px) {
   .menu-title {
-    font-size: 1.2rem; /* ⬅️ Aumenta este valor */
+    font-size: 1.2rem;
     text-align: left;
     padding-left: 1rem;
   }
 }
 
-
-
-/* Estilos generales */
+/* ===========================================
+   ACORDEÓN
+   =========================================== */
 .accordion-container {
   width: 100%;
-  padding: 10px 10px;
-  background-color: #f9f9f9;
-  /* Opcional, para ver el área */
+  padding: 10px;
+  background-color: var(--secondary-color);
 }
-
-
-
-
-
 
 .accordion-item {
   margin-bottom: 0.8px;
-  /* Ajusta el valor para cambiar la separación */
 }
 
-/* Ajuste para los botones de acordeón con imágenes de fondo */
 .accordion-button {
   background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20TodoTerreno.jpg?v=20240902-002');
   background-size: contain;
-  /* Ajusta la imagen para que se vea completa */
   background-repeat: no-repeat;
-  /* Evita que la imagen se repita */
   background-position: center;
-  /* Centra la imagen */
-  color: #f1f1f1;
-  /* Ajusta el color del texto */
+  color: var(--text-light);
   font-weight: bold;
   min-height: 190px;
-  /* Ajusta según el diseño */
   display: flex;
   align-items: center;
   justify-content: center;
   text-shadow: 1px 1px 1px rgba(72, 17, 13, 0.7);
-
 }
-/* Estilo de los productos */
+
+/* ===========================================
+   ELEMENTOS DEL MENÚ
+   =========================================== */
 .menu-item {
   padding: 4px 0;
-  border-bottom: 1px solid #a4a2a2;
+  border-bottom: 1px solid var(--border-color);
 }
-
-/* Botón personalizado */
 
 .menu-item .btn-custom {
   font-weight: bold;
-  background-color: none;
-  /* Color de fondo */
-  color: #48110d;
-  /* Color del texto */
+  background-color: transparent;
+  color: var(--text-dark);
   border: none;
-  /* Sin borde */
   border-radius: 2px;
-  /* Bordes redondeados */
   padding: 6px 4px;
-  /* Espaciado interno */
   font-size: 14px;
-  /* Tamaño de la fuente */
   cursor: pointer;
-  /* Cambiar el cursor al pasar el ratón */
-  transition: background-color 0.3s, transform 0.2s;
-  /* Transiciones suaves para el fondo y transformaciones */
+  transition: var(--transition-smooth);
 }
 
-
-
-/* Estilo para la imagen del chatbot */
+/* ===========================================
+   CHATBOT - IMAGEN FLOTANTE
+   =========================================== */
 .chatbot-image img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
   position: fixed;
   bottom: 20px;
-  /* Asegura que esté a 20px de la parte inferior */
   right: 20px;
-  /* Asegura que esté a 20px desde el lado derecho */
   z-index: 9999;
   transition: transform 0.3s ease;
 }
 
-/* Estilamos el contenedor para centrar la imagen */
+/* ===========================================
+   CHATBOT - HEADER
+   =========================================== */
 .chatbot-header-image-container {
   display: flex;
   justify-content: center;
-  /* Centrado horizontal */
   align-items: center;
-  /* Centrado vertical */
-  width: 100%;
+  width:  100%;
   height: 100px;
-  /* Altura para el contenedor */
-  background-color: #48110d;
-  /* Color de fondo para destacar */
-
+  background-color: var(--primary-color);
 }
 
-/* Estilamos la imagen dentro del contenedor */
 .chatbot-header-image {
   width: 360px;
   height: 100px;
-  border-radius: 0%;
-  /* Hace la imagen completamente circular */
-  background-color: #00000000;
-  /* Color transparente o personalizado */
+  border-radius: 0;
+  background-color: transparent;
 }
 
-/* Estilado para el modal */
+/* ===========================================
+   MODAL DEL CHATBOT
+   =========================================== */
 .modal {
-  background-color: #0000006d;
+  background-color: var(--modal-bg);
   position: fixed;
-  /* Fijar el modal en la pantalla */
   bottom: 0;
-  /* Asegura que el modal esté alineado en la parte inferior */
   left: 0;
-  /* Asegura que el modal esté alineado a la izquierda */
   margin: 0;
-  /* Elimina márgenes */
   z-index: 9999;
-  /* Coloca el modal por encima de otros elementos */
-
-
+  border-radius: 10px;
 }
 
-/* Estilado para el contenedor principal del modal */
 .modal-dialog {
   position: relative;
   width: 100%;
   max-width: 200px;
-  /* Ajusta el tamaño del modal según el diseño */
-
 }
 
-/* Estilado del contenido modal */
 .modal-content {
   border-radius: 10px 10px 0 0;
-  /* Bordes redondeados en la parte superior */
   box-shadow: 0px -4px 10px rgba(22, 22, 22, 0.397);
-  /* Sombra para efecto flotante */
-
 }
 
-/* Estilado interno del modal */
 .modal-body {
   padding: 10px;
-  background-color: #ecb78b;
-
+  background-color: var(--accent-color);
+  border-radius: 5px;
 }
 
-/* Contenedor para mensajes del chat */
+/* ===========================================
+   CHAT - CONTENIDO Y MENSAJES
+   =========================================== */
 .chat-content {
   max-height: 300px;
   overflow-y: auto;
-  border: 0px solid #ce2424;
+  border: none;
   padding: 10px;
   border-radius: 8px;
 }
 
-/* Estilado general para los mensajes */
 .message {
   display: flex;
   align-items: center;
@@ -324,39 +296,38 @@
   justify-content: flex-end;
 }
 
-/* Mensajes con formato */
 .message p {
-  background-color: #f1f1f1;
+  background-color: var(--text-light);
   padding: 8px 12px;
   border-radius: 12px;
   max-width: 80%;
   margin: 0;
 }
 
-/* Estilado para la caja de entrada */
+/* ===========================================
+   CHAT - ENTRADA Y BOTONES
+   =========================================== */
 .chat-input {
   display: flex;
   gap: 8px;
 }
 
-/* Estilado para el botón de envío */
 .chat-send-btn {
-  background-color: #48110d !important;
+  background-color: var(--primary-color) !important;
   color: #fff !important;
   border: none !important;
   padding: 8px 10px !important;
   border-radius: 5px !important;
-  transition: background-color 0.3s ease !important;
+  transition: var(--transition-smooth) !important;
 }
 
-/* Hover en el botón */
 .chat-send-btn:hover {
-  background-color: #45a049 !important;
+  background-color: var(--success-color) !important;
 }
 
-/* Estilado para el panel de emojis */
-
-
+/* ===========================================
+   EMOJIS
+   =========================================== */
 .emoji-trigger {
   position: relative;
   display: inline-block;
@@ -372,14 +343,13 @@
 .emoji-panel {
   position: absolute;
   top: 100%;
-  /* Muestra debajo del botón */
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.169);
+  box-shadow: 0 4px 6px var(--shadow-color);
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -389,139 +359,124 @@
 .emoji {
   font-size: 20px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: var(--transition-quick);
 }
 
 .emoji:hover {
   transform: scale(1.2);
 }
 
+/* ===========================================
+   UTILIDADES
+   =========================================== */
 .hidden {
   display: none;
 }
 
-
 #chatbotModalContent {
   position: absolute;
-  /* Permite mover el modal */
   cursor: default;
 }
 
 #chatbotModalHeader {
   cursor: move;
-  /* Cursor indica que se puede arrastrar */
 }
 
-
-
-
-
-/* Media query para pantallas pequeñas */
+/* ===========================================
+   RESPONSIVE - MÓVIL
+   =========================================== */
 @media (max-width: 768px) {
-
-  /* Ajustar la imagen flotante del chatbot */
   .chatbot-image img {
     width: 60px;
     height: 60px;
     bottom: 10px;
-    /* Reduce el espacio desde la parte inferior */
     right: 10px;
-    /* Reduce el espacio desde el lado derecho */
   }
 
-  /* Ajustar el modal */
   .modal {
     background-color: rgba(0, 0, 0, 0.8);
-    /* Fondo un poco más oscuro */
     bottom: 0;
-    /* Mantiene el modal pegado abajo */
     left: 0;
-    /* Asegura que ocupe toda la pantalla */
     width: 100%;
-    /* Ocupa todo el ancho disponible */
     margin: 0;
   }
 
-  /* Ajustar el contenido del modal */
   .modal-dialog {
     max-width: 100%;
-    /* Ocupa todo el ancho */
     margin: 0;
-    /* Elimina márgenes laterales */
     border-radius: 0;
-    /* Elimina los bordes redondeados */
   }
 
   .modal-content {
     border-radius: 0;
-    /* Elimina los bordes redondeados */
   }
 
-  /* Ajustar el cuerpo del modal */
   .modal-body {
     padding: 15px;
-    /* Reduce el padding */
   }
 
-  /* Ajustar la caja de mensajes */
   .chat-content {
     max-height: 200px;
-    /* Reduce la altura máxima */
     padding: 8px;
-    /* Reduce el padding */
   }
 
-  /* Ajustar la caja de entrada */
   .chat-input {
     flex-direction: column;
-    /* Apila los elementos verticalmente */
     gap: 5px;
-    /* Reduce el espacio entre los elementos */
   }
 
-  /* Ajustar el tamaño de los botones de envío en pantallas pequeñas */
   .chat-send-btn {
-    padding: 8px 8px;
-    /* Reducir el tamaño del botón */
-    font-size: 14px;
+    padding: 8px !important;
+    font-size: 14px !important;
   }
 }
 
 
+/* ===========================================
+   VARIABLES CSS
+   =========================================== */
+:root {
+  --footer-bg: #48110d;
+  --footer-hover: #ffc107;
+  --transition-smooth: color 0.3s ease;
+  
+  /* Breakpoints para consistencia */
+  --mobile-max: 480px;
+  --tablet-min: 769px;
+  --tablet-max: 1024px;
+}
 
-
-
-/*footer*/
-
+/* ===========================================
+   FOOTER
+   =========================================== */
 .custom-footer {
-  background-color: #48110d;
-  /* Cambia este color según tus preferencias */
+  background-color: var(--footer-bg);
 }
 
 .custom-footer a {
-  transition: color 0.3s ease;
-  /* Transición suave para el cambio de color */
+  transition: var(--transition-smooth);
+  text-decoration: none;
 }
 
 .custom-footer a:hover {
-  color: #ffc107;
-  /* Color al pasar el cursor, puedes cambiarlo según tu diseño */
+  color: var(--footer-hover);
 }
 
 .custom-footer h5 {
   font-weight: bold;
-  /* Estilo de fuente para los títulos */
 }
 
 .social-media h5 {
   margin-bottom: 10px;
-  /* Espacio entre el título y los enlaces de redes sociales */
 }
 
-
+/* ===========================================
+   MEDIA QUERIES - MÓVIL
+   =========================================== */
 @media (max-width: 480px) {
   .logo-img {
     width: 150px;
+    max-height: 120px;
   }
 
   .accordion-button {
@@ -531,19 +486,86 @@
 
   .form-control {
     width: 100%;
+    min-width: auto;
+  }
+  
+  .custom-footer {
+    padding: 20px 15px;
+  }
+  
+  .custom-footer h5 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  .custom-footer .col-md-3,
+  .custom-footer .col-md-6 {
+    margin-bottom: 20px;
   }
 }
 
+/* ===========================================
+   MEDIA QUERIES - TABLET
+   =========================================== */
 @media (min-width: 769px) and (max-width: 1024px) {
   .logo-img {
     width: 200px;
+    max-height: 140px;
   }
 
   .form-control {
     width: 200px;
   }
+  
+  .accordion-button {
+    min-height: 160px;
+  }
+  
+  .custom-footer {
+    padding: 30px 20px;
+  }
 }
 
+/* ===========================================
+   MEDIA QUERIES - DESKTOP
+   =========================================== */
+@media (min-width: 1025px) {
+  .custom-footer {
+    padding: 40px 0;
+  }
+  
+  .logo-img {
+    width: 250px;
+  }
+  
+  .form-control {
+    width: 150px;
+  }
+}
+
+/* ===========================================
+   MEDIA QUERIES ADICIONALES - MÓVIL PEQUEÑO
+   =========================================== */
+@media (max-width: 320px) {
+  .logo-img {
+    width: 120px;
+    max-height: 100px;
+  }
+  
+  .accordion-button {
+    font-size: 12px;
+    min-height: 100px;
+    padding: 8px;
+  }
+  
+  .custom-footer h5 {
+    font-size: 1rem;
+  }
+  
+  .social-media h5 {
+    margin-bottom: 8px;
+  }
+}
 
 
 

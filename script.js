@@ -186,8 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-
 // panel de emoji
 document
   .getElementById("toggleEmojiPanel")
@@ -195,8 +193,6 @@ document
     const emojiPanel = document.getElementById("emojiPanel");
     emojiPanel.classList.toggle("hidden");
   });
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const modalContent = document.getElementById("chatbotModalContent");
@@ -231,15 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.removeEventListener("mouseup", onMouseUp);
   };
 });
-
-
-
-
-
-
-
-
-
 
 // Carrito de Compras para Hamburguesas
 class CarritoCompras {
@@ -372,8 +359,7 @@ class CarritoCompras {
       carritoFlotante.innerHTML = `
                 <button class="btn btn-primary carrito-btn" data-bs-toggle="modal" data-bs-target="#carritoModal">
                     <i class="bi bi-cart4"></i>
-                    <span class="carrito-contador">0</span> <!-- 👈 usamos clase en vez de id -->
-
+                    <span class="carrito-contador">0</span>
                 </button>
             `;
       document.body.appendChild(carritoFlotante);
@@ -410,17 +396,94 @@ class CarritoCompras {
             `;
       document.body.appendChild(modalCarrito);
     }
+
+    // Crear modal de pago si no existe
+    this.crearModalPago();
   }
 
+  crearModalPago() {
+    if (!document.getElementById('pagoModal')) {
+      const modalPago = document.createElement('div');
+      modalPago.innerHTML = `
+        <div class="modal fade" id="pagoModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">
+                  <i class="bi bi-credit-card me-2"></i>
+                  Proceder al Pago
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <!-- Resumen del pedido -->
+                  <div class="col-md-6">
+                    <h6><i class="bi bi-receipt me-2"></i>Resumen del Pedido</h6>
+                    <div id="resumen-pedido" class="border rounded p-3 mb-3"></div>
+                    <div class="total-pago bg-light p-3 rounded">
+                      <h5>Total a Pagar: <span id="total-pago" class="text-success">$0</span></h5>
+                    </div>
+                  </div>
+                  
+                  <!-- Formulario de pago -->
+                  <div class="col-md-6">
+                    <h6><i class="bi bi-person me-2"></i>Información de Entrega</h6>
+                    <form id="formPago">
+                      <div class="mb-3">
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nombreCliente" required>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefonoCliente" required>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Dirección de Entrega</label>
+                        <textarea class="form-control" id="direccionCliente" rows="3" required></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Método de Pago</label>
+                        <select class="form-select" id="metodoPago" required>
+                          <option value="">Seleccionar método</option>
+                          <option value="efectivo">Efectivo</option>
+                          <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                          <option value="transferencia">Transferencia Bancaria</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Comentarios Adicionales</label>
+                        <textarea class="form-control" id="comentarios" rows="2" placeholder="Instrucciones especiales, referencias, etc."></textarea>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="carrito.confirmarPedido()">
+                  <i class="bi bi-check-circle me-2"></i>Confirmar Pedido
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modalPago);
+    }
+  }
+
+
+
+
+  
   actualizarVista() {
     // Actualizar contador del carrito flotante
-    // Actualizar contador del carrito flotante
-    const contador = document.getElementById('carrito-contador');
+    const contador = document.querySelector('.carrito-contador');
     if (contador) {
       const totalItems = this.items.reduce((suma, item) => suma + item.cantidad, 0);
       contador.textContent = totalItems;
     }
-
 
     // Actualizar items del carrito
     const carritoItems = document.getElementById('carrito-items');
@@ -493,15 +556,179 @@ class CarritoCompras {
     this.guardarCarrito();
   }
 
+  // MÉTODO MEJORADO: Proceder al pago con modal
   procederPago() {
     if (this.items.length === 0) {
-      alert('Tu carrito está vacío');
+      this.mostrarNotificacion('Tu carrito está vacío', 'warning');
       return;
     }
 
-    // Aquí puedes integrar con tu sistema de pago
-    alert(`Procesando pago por ${this.formatearPrecio(this.total)}\n\nTotal de items: ${this.items.length}`);
-    console.log('Items del carrito:', this.items);
+    // Actualizar el resumen del pedido en el modal
+    this.actualizarResumenPedido();
+
+    // Cerrar el modal del carrito
+    const carritoModal = document.getElementById('carritoModal');
+    const modalInstance = bootstrap.Modal.getInstance(carritoModal);
+    if (modalInstance) {
+      modalInstance.hide();
+    }
+
+    // Mostrar el modal de pago
+    setTimeout(() => {
+      const pagoModal = new bootstrap.Modal(document.getElementById('pagoModal'));
+      pagoModal.show();
+    }, 300);
+  }
+
+  actualizarResumenPedido() {
+    const resumenElement = document.getElementById('resumen-pedido');
+    const totalPagoElement = document.getElementById('total-pago');
+
+    if (resumenElement) {
+      resumenElement.innerHTML = this.items.map(item => `
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div>
+            <strong>${item.nombre}</strong>
+            <br>
+            <small class="text-muted">Cantidad: ${item.cantidad}</small>
+          </div>
+          <div class="text-end">
+            <strong>${this.formatearPrecio(item.precio * item.cantidad)}</strong>
+          </div>
+        </div>
+        <hr class="my-2">
+      `).join('');
+    }
+
+    if (totalPagoElement) {
+      totalPagoElement.textContent = this.formatearPrecio(this.total);
+    }
+  }
+
+  confirmarPedido() {
+    const form = document.getElementById('formPago');
+    
+    // Validar formulario
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Obtener datos del formulario
+    const datosCliente = {
+      nombre: document.getElementById('nombreCliente').value,
+      telefono: document.getElementById('telefonoCliente').value,
+      direccion: document.getElementById('direccionCliente').value,
+      metodoPago: document.getElementById('metodoPago').value,
+      comentarios: document.getElementById('comentarios').value
+    };
+
+    // Crear objeto del pedido
+    const pedido = {
+      id: this.generarIdPedido(),
+      fecha: new Date().toLocaleString('es-CO'),
+      cliente: datosCliente,
+      items: this.items,
+      total: this.total,
+      estado: 'Confirmado'
+    };
+
+    // Aquí puedes enviar el pedido a tu servidor
+    console.log('Pedido confirmado:', pedido);
+
+    // Mostrar confirmación
+    this.mostrarConfirmacionPedido(pedido);
+
+    // Limpiar carrito y cerrar modal
+    this.limpiarCarrito();
+    const pagoModal = document.getElementById('pagoModal');
+    const modalInstance = bootstrap.Modal.getInstance(pagoModal);
+    if (modalInstance) {
+      modalInstance.hide();
+    }
+
+    // Limpiar formulario
+    form.reset();
+  }
+
+  generarIdPedido() {
+    return 'PED-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+  }
+
+  mostrarConfirmacionPedido(pedido) {
+    const confirmacion = document.createElement('div');
+    confirmacion.innerHTML = `
+      <div class="modal fade" id="confirmacionModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+              <h5 class="modal-title">
+                <i class="bi bi-check-circle me-2"></i>
+                ¡Pedido Confirmado!
+              </h5>
+            </div>
+            <div class="modal-body text-center">
+              <div class="mb-3">
+                <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+              </div>
+              <h4>¡Gracias por tu pedido!</h4>
+              <p><strong>Número de pedido:</strong> ${pedido.id}</p>
+              <p><strong>Total:</strong> ${this.formatearPrecio(pedido.total)}</p>
+              <p>Tu pedido será entregado en aproximadamente <strong>30-45 minutos</strong></p>
+              <p class="text-muted">Recibirás una llamada de confirmación en breve</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(confirmacion);
+    
+    const confirmacionModal = new bootstrap.Modal(document.getElementById('confirmacionModal'));
+    confirmacionModal.show();
+
+    // Remover el modal después de cerrarlo
+    document.getElementById('confirmacionModal').addEventListener('hidden.bs.modal', function () {
+      document.body.removeChild(confirmacion);
+    });
+  }
+
+  mostrarNotificacion(mensaje, tipo = 'info') {
+    const toast = document.createElement('div');
+    const iconos = {
+      'success': '✅',
+      'warning': '⚠️',
+      'error': '❌',
+      'info': 'ℹ️'
+    };
+
+    toast.className = 'toast-notification';
+    toast.innerHTML = `
+      <div class="alert alert-${tipo} toast-content">
+        ${iconos[tipo]} ${mensaje}
+      </div>
+    `;
+    toast.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      animation: slideIn 0.3s ease-out;
+    `;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.animation = 'slideOut 0.3s ease-out';
+      setTimeout(() => {
+        if (document.body.contains(toast)) {
+          document.body.removeChild(toast);
+        }
+      }, 300);
+    }, 4000);
   }
 }
 
@@ -511,3 +738,62 @@ document.addEventListener('DOMContentLoaded', function () {
   carrito = new CarritoCompras();
 });
 
+// Estilos CSS para las animaciones (agregar al CSS)
+const estilosToast = document.createElement('style');
+estilosToast.textContent = `
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  .carrito-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .carrito-btn {
+    border-radius: 50px;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  .carrito-contador {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+`;
+document.head.appendChild(estilosToast);
+
+ 
