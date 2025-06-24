@@ -62,226 +62,232 @@
 
 <body>
   <style>
-/* ===========================================
+    /* ===========================================
    ESTILOS BASE - APLICABLES A TODAS LAS PANTALLAS
    =========================================== */
 
-/* Imagen del producto */
-.product-image img {
-  width: 200px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-}
+    /* Imagen del producto */
+    .product-image img {
+      width: 200px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
 
-/* Descripción del producto */
-.product-description {
-  text-align: justify;
-}
+    /* Descripción del producto */
+    .product-description {
+      text-align: justify;
+    }
 
-.product-description h5 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #48110d;
-  text-align: center;
-  line-height: 1.2;
-  font-family: Arial, sans-serif;
-}
+    .product-description h5 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #48110d;
+      text-align: center;
+      line-height: 1.2;
+      font-family: Arial, sans-serif;
+    }
 
-.product-description p {
-  font-size: 1rem;
-  color: #48110d;
-  line-height: 1.1;
-  text-align: justify;
-  max-width: 500px;
-  margin: 0 auto 8px auto; /* Centrado horizontal y margen inferior */
-  font-family: Arial, sans-serif;
-}
+    .product-description p {
+      font-size: 1rem;
+      color: #48110d;
+      line-height: 1.1;
+      text-align: justify;
+      max-width: 500px;
+      margin: 0 auto 8px auto;
+      /* Centrado horizontal y margen inferior */
+      font-family: Arial, sans-serif;
+    }
 
-/* Información del producto (precio y botones) */
-.product-info {
-  text-align: justify;
-  font-family: Arial, sans-serif;
-}
+    /* Información del producto (precio y botones) */
+    .product-info {
+      text-align: justify;
+      font-family: Arial, sans-serif;
+    }
 
-.product-info .price {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #48110d;
-  text-align: justify;
-}
+    .product-info .price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #48110d;
+      text-align: justify;
+    }
 
-/* Botón personalizado */
-.product-info .btn-custom {
-  background-color: #f58b2d;
-  color: #fff;
-  border: none;
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease; /* Transición suave */
-}
+    /* Botón personalizado */
+    .product-info .btn-custom {
+      background-color: #f58b2d;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      /* Transición suave */
+    }
 
-.product-info .btn-custom:hover {
-  background-color: #09e64b;
-}
+    .product-info .btn-custom:hover {
+      background-color: #09e64b;
+    }
 
-/* ===========================================
+    /* ===========================================
    MEDIA QUERIES - RESPONSIVIDAD
    =========================================== */
 
-/* Tablets grandes y pantallas medianas (992px - 1200px) */
-@media (max-width: 1200px) and (min-width: 992px) {
-  .product-image img {
-    width: 150px;
-    height: 100px;
-  }
-  
-  .product-description h5 {
-    font-size: 1.rem;
-  }
-  
-  .product-description p {
-    max-width: 350px;
-    
-  }
+    /* Tablets grandes y pantallas medianas (992px - 1200px) */
+    @media (max-width: 1200px) and (min-width: 992px) {
+      .product-image img {
+        width: 150px;
+        height: 100px;
+      }
 
-}
+      .product-description h5 {
+        font-size: 1.rem;
+      }
 
-/* Tablets (768px - 991px) */
-@media (max-width: 991px) and (min-width: 768px) {
-  .product-image img {
-    width: 140px;
-    height: 120px;
-  }
-  
-  .product-description h5 {
-    font-size: 1.1rem;
-  }
-  
-  .product-description p {
-    font-size: 0.9rem;
-    max-width: 400px;
-  }
-  
-  .product-info .price {
-    font-size: 0.95rem;
-  }
-  
-  .product-info .btn-custom {
-    font-size: 0.6rem;
-    padding: 4px 6px;
-  }
-}
+      .product-description p {
+        max-width: 350px;
 
-/* Dispositivos móviles y tablets pequeñas (hasta 767px) */
-@media (max-width: 767px) {
-  /* Estilos del acordeón para móviles */
-  .accordion-button {
-    background-size: contain;
-    background-position: center;
-    min-height: 50px;
-  }
+      }
 
-  .accordion-body {
-    padding: 2px;
-  }
+    }
 
-  /* Elementos del menú */
-  .menu-item {
-    flex-wrap: wrap;
-    text-align: center;
-  }
+    /* Tablets (768px - 991px) */
+    @media (max-width: 991px) and (min-width: 768px) {
+      .product-image img {
+        width: 140px;
+        height: 120px;
+      }
 
-  /* Imagen responsiva para móviles */
-  .product-image img {
-    max-width: 50%;
-    width: auto;
-    height: auto;
-    margin-bottom: 8px;
-  }
+      .product-description h5 {
+        font-size: 1.1rem;
+      }
 
-  /* Descripción en móviles */
-  .product-description {
-    margin-bottom: 8px;
-  }
-  
-  .product-description h5 {
-    font-size: 1rem;
-  }
+      .product-description p {
+        font-size: 0.9rem;
+        max-width: 400px;
+      }
 
-  .product-description p {
-    font-size: 0.875rem; /* 14px */
-    max-width: 100%;
-    margin-bottom: 10px;
-  }
+      .product-info .price {
+        font-size: 0.95rem;
+      }
 
-  /* Información del producto en móviles */
-  .product-info {
-    font-size: 0.875rem; /* 14px */
-  }
-  
-  .product-info .price {
-    font-size: 0.875rem;
-  }
+      .product-info .btn-custom {
+        font-size: 0.6rem;
+        padding: 4px 6px;
+      }
+    }
 
-  .product-info .btn,
-  .product-info .btn-custom {
-    font-size: 0.6rem; /* 12.8px */
-    padding: 4px 8px;
-  }
-}
+    /* Dispositivos móviles y tablets pequeñas (hasta 767px) */
+    @media (max-width: 767px) {
 
-/* Móviles muy pequeños (hasta 480px) */
-@media (max-width: 480px) {
-  .product-description h5 {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-  }
+      /* Estilos del acordeón para móviles */
+      .accordion-button {
+        background-size: contain;
+        background-position: center;
+        min-height: 50px;
+      }
 
-  .product-description p {
-    font-size: 0.8rem; /* 12.8px */
-    line-height: 1.3;
-  }
+      .accordion-body {
+        padding: 2px;
+      }
 
-  .product-info .price {
-    font-size: 0.8rem;
-  }
+      /* Elementos del menú */
+      .menu-item {
+        flex-wrap: wrap;
+        text-align: center;
+      }
 
-  .product-info .btn-custom {
-    font-size: 0.7rem;
-    padding: 2px 5px;
-  }
-  
-  .accordion-button {
-    min-height: 50px;
-    font-size: 0.875rem;
-  }
-}
+      /* Imagen responsiva para móviles */
+      .product-image img {
+        max-width: 50%;
+        width: auto;
+        height: auto;
+        margin-bottom: 8px;
+      }
 
-/* Pantallas extra pequeñas (hasta 320px) */
-@media (max-width: 320px) {
-  .product-description h5 {
-    font-size: 0.85rem;
-  }
+      /* Descripción en móviles */
+      .product-description {
+        margin-bottom: 8px;
+      }
 
-  .product-description p {
-    font-size: 0.75rem; /* 12px */
-  }
+      .product-description h5 {
+        font-size: 1rem;
+      }
 
-  .product-info .price {
-    font-size: 0.75rem;
-  }
+      .product-description p {
+        font-size: 0.875rem;
+        /* 14px */
+        max-width: 100%;
+        margin-bottom: 10px;
+      }
 
-  .product-info .btn-custom {
-    font-size: 0.75rem;
-    padding: 3px 6px;
-  }
-}
+      /* Información del producto en móviles */
+      .product-info {
+        font-size: 0.875rem;
+        /* 14px */
+      }
 
+      .product-info .price {
+        font-size: 0.875rem;
+      }
 
+      .product-info .btn,
+      .product-info .btn-custom {
+        font-size: 0.6rem;
+        /* 12.8px */
+        padding: 4px 8px;
+      }
+    }
+
+    /* Móviles muy pequeños (hasta 480px) */
+    @media (max-width: 480px) {
+      .product-description h5 {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .product-description p {
+        font-size: 0.8rem;
+        /* 12.8px */
+        line-height: 1.3;
+      }
+
+      .product-info .price {
+        font-size: 0.8rem;
+      }
+
+      .product-info .btn-custom {
+        font-size: 0.7rem;
+        padding: 2px 5px;
+      }
+
+      .accordion-button {
+        min-height: 50px;
+        font-size: 0.875rem;
+      }
+    }
+
+    /* Pantallas extra pequeñas (hasta 320px) */
+    @media (max-width: 320px) {
+      .product-description h5 {
+        font-size: 0.85rem;
+      }
+
+      .product-description p {
+        font-size: 0.75rem;
+        /* 12px */
+      }
+
+      .product-info .price {
+        font-size: 0.75rem;
+      }
+
+      .product-info .btn-custom {
+        font-size: 0.75rem;
+        padding: 3px 6px;
+      }
+    }
   </style>
   <!-- PRIMER NAVBAR  -->
   <nav class="navbar navbar-expand-lg" style="background-color: #48110d">
@@ -294,7 +300,8 @@
       <!-- Carrito e icono de menú hamburguesa -->
       <div class="d-flex align-items-center">
         <!-- Icono del carrito -->
-        <a href="#" class="text-white me-3 carrito-navbar" id="carrito-navbar" data-bs-toggle="modal" data-bs-target="#carritoModal">
+        <a href="#" class="text-white me-3 carrito-navbar" id="carrito-navbar" data-bs-toggle="modal"
+          data-bs-target="#carritoModal">
           <i class="bi bi-cart4 fs-2"></i>
           <span id="carrito-contador" class="badge bg-yellow">0</span>
         </a>
@@ -359,7 +366,7 @@
   <!-- Línea de separación -->
   <hr class="navbar-separator" />
 
- 
+
 
   <!--carrusel de imagenes-->
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -710,7 +717,8 @@
                 </div>
                 <div class="product-description flex-grow-1 text-center">
                   <h5>Vaquero callejero en combo</h5>
-                  <p>Perro caliente con salchicha de 115 g a la parrilla, papa callejera, cebolla picada, salsa blanca, salsa de tomate y mostaza en pan perro + papas medianas (Corral o en cascos) + bebida PET
+                  <p>Perro caliente con salchicha de 115 g a la parrilla, papa callejera, cebolla picada, salsa blanca,
+                    salsa de tomate y mostaza en pan perro + papas medianas (Corral o en cascos) + bebida PET
                   </p>
                 </div>
                 <div class="product-info text-end">
@@ -725,7 +733,8 @@
                 </div>
                 <div class="product-description flex-grow-1 text-center">
                   <h5>Vaquero callejero con bebida</h5>
-                  <p>Perro caliente con salchicha de 115 g a la parrilla, papa callejera, cebolla picada, salsa blanca, salsa de tomate y mostaza en pan perro + bebida PET
+                  <p>Perro caliente con salchicha de 115 g a la parrilla, papa callejera, cebolla picada, salsa blanca,
+                    salsa de tomate y mostaza en pan perro + bebida PET
                   </p>
                 </div>
                 <div class="product-info text-end">
@@ -1106,7 +1115,6 @@
             <button class="btn btn-primary chat-send-btn mt-2" id="sendMessage">
               Enviar
             </button>
-
             <!-- Panel de emojis -->
             <figure class="emoji-trigger">
               <button id="toggleEmojiPanel" class="emoji-btn">😊</button>
@@ -1128,10 +1136,10 @@
                 <span class="emoji">🤬</span>
               </div>
             </figure>
-          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!--footer-->
