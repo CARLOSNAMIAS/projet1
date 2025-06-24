@@ -475,25 +475,35 @@ body, html {
 /* ===========================================
    FOOTER
    =========================================== */
+
 .custom-footer {
-  background-color: var(--footer-bg);
+  background-color: #48110d !important;  /* ✅ color fijo y forzado */
+  color: #ffffff;
+  padding: 40px 20px;
+  font-size: 0.95rem;
 }
 
+.custom-footer h5,
+.custom-footer p,
 .custom-footer a {
-  transition: var(--transition-smooth);
-  text-decoration: none;
+  color: #ffffff;
+  margin-bottom: 8px;
 }
 
 .custom-footer a:hover {
-  color: var(--footer-hover);
+  color: #ffc107;
+  text-decoration: underline;
 }
 
-.custom-footer h5 {
-  font-weight: bold;
+.custom-footer .social-media i {
+  font-size: 1.5rem;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
-.social-media h5 {
-  margin-bottom: 10px;
+.custom-footer .social-media i:hover {
+  color: #ffc107;
 }
 
 /* ===========================================
