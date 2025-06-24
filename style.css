@@ -209,9 +209,6 @@ body, html {
 
 
 
-
-
-
 /* ===========================================
    ELEMENTOS DEL MENÚ
    =========================================== */
@@ -247,68 +244,89 @@ body, html {
 
 /* ===========================================
    CHATBOT - HEADER
-   =========================================== */
+  /* ===================================================
+   VARIABLES CSS
+   =================================================== */
+:root {
+  --primary-color: #48110d;
+  --accent-color: #ff6b0f61;
+  --modal-bg: #ffffff59;
+  --success-color: #28a745;
+  --text-light: #f1f1f1;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+
+  --transition-smooth: all 0.3s ease;
+  --transition-quick: all 0.2s ease;
+
+  --mobile-max: 380px;
+  --tablet-min: 769px;
+  --tablet-max: 1024px;
+}
+
+/* ===================================================
+   HEADER CHATBOT
+   =================================================== */
 .chatbot-header-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width:  100%;
-  height: 100px;
+  width: 100%;
+  height: 4rem; /* 100px */
   background-color: var(--primary-color);
 }
 
 .chatbot-header-image {
-  width: 360px;
-  height: 100px;
-  border-radius: 0;
-  background-color: transparent;
+  width: 60%;      /* depende del contenedor */
+  max-width: 240px;
+  height: auto;
 }
 
-/* ===========================================
-   MODAL DEL CHATBOT
-   =========================================== */
+
+/* ===================================================
+   MODAL GENERAL
+   =================================================== */
 .modal {
-  background-color: var(--modal-bg);
   position: fixed;
   bottom: 0;
   left: 0;
+  width: 100%;
   margin: 0;
-  z-index: 9999;
+  background-color: var(--modal-bg);
   border-radius: 10px;
+  z-index: 9999;
 }
 
 .modal-dialog {
   position: relative;
   width: 100%;
-  max-width: 200px;
+  max-width: 20rem; /* 200px */
 }
 
 .modal-content {
   border-radius: 10px 10px 0 0;
-  box-shadow: 0px -4px 10px rgba(22, 22, 22, 0.397);
+  box-shadow: 0 -4px 10px rgba(22, 22, 22, 0.4);
 }
 
 .modal-body {
-  padding: 10px;
   background-color: var(--accent-color);
+  padding: 0.625rem;
   border-radius: 5px;
 }
 
-/* ===========================================
-   CHAT - CONTENIDO Y MENSAJES
-   =========================================== */
+/* ===================================================
+   CONTENIDO DEL CHAT
+   =================================================== */
 .chat-content {
-  max-height: 300px;
+  max-height: 18.75rem; /* 300px */
   overflow-y: auto;
-  border: none;
-  padding: 10px;
+  padding: 0.625rem;
   border-radius: 8px;
 }
 
 .message {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 0.375rem;
 }
 
 .message.bot {
@@ -321,25 +339,25 @@ body, html {
 
 .message p {
   background-color: var(--text-light);
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   border-radius: 12px;
   max-width: 80%;
   margin: 0;
 }
 
-/* ===========================================
-   CHAT - ENTRADA Y BOTONES
-   =========================================== */
+/* ===================================================
+   ENTRADA DE TEXTO Y BOTÓN
+   =================================================== */
 .chat-input {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .chat-send-btn {
   background-color: var(--primary-color) !important;
   color: #fff !important;
   border: none !important;
-  padding: 8px 10px !important;
+  padding: 0.5rem 0.625rem !important;
   border-radius: 5px !important;
   transition: var(--transition-smooth) !important;
 }
@@ -348,16 +366,16 @@ body, html {
   background-color: var(--success-color) !important;
 }
 
-/* ===========================================
+/* ===================================================
    EMOJIS
-   =========================================== */
+   =================================================== */
 .emoji-trigger {
   position: relative;
   display: inline-block;
 }
 
 .emoji-btn {
-  font-size: 24px;
+  font-size: 1.5rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -368,19 +386,19 @@ body, html {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.717);
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 10px;
+  padding: 0.625rem;
   box-shadow: 0 4px 6px var(--shadow-color);
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  width: 200px;
+  gap: 0.625rem;
+  width: 12.5rem; /* 200px */
 }
 
 .emoji {
-  font-size: 20px;
+  font-size: 1.25rem;
   cursor: pointer;
   transition: var(--transition-quick);
 }
@@ -389,9 +407,9 @@ body, html {
   transform: scale(1.2);
 }
 
-/* ===========================================
+/* ===================================================
    UTILIDADES
-   =========================================== */
+   =================================================== */
 .hidden {
   display: none;
 }
@@ -405,22 +423,22 @@ body, html {
   cursor: move;
 }
 
-/* ===========================================
-   RESPONSIVE - MÓVIL
-   =========================================== */
+/* ===================================================
+   RESPONSIVE (MÓVIL)
+   =================================================== */
 @media (max-width: 768px) {
   .chatbot-image img {
-    width: 60px;
-    height: 60px;
-    bottom: 10px;
-    right: 10px;
+    width: 3.75rem; /* 60px */
+    height: 3.75rem;
+    bottom: 0.625rem;
+    right: 0.625rem;
   }
 
   .modal {
     background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
     bottom: 0;
     left: 0;
-    width: 100%;
     margin: 0;
   }
 
@@ -435,38 +453,23 @@ body, html {
   }
 
   .modal-body {
-    padding: 15px;
+    padding: 0.9375rem;
   }
 
   .chat-content {
-    max-height: 200px;
-    padding: 8px;
+    max-height: 12.5rem; /* 200px */
+    padding: 0.5rem;
   }
 
   .chat-input {
     flex-direction: column;
-    gap: 5px;
+    gap: 0.3125rem;
   }
 
   .chat-send-btn {
-    padding: 8px !important;
-    font-size: 14px !important;
+    padding: 0.5rem !important;
+    font-size: 0.875rem !important;
   }
-}
-
-
-/* ===========================================
-   VARIABLES CSS
-   =========================================== */
-:root {
-  --footer-bg: #48110d;
-  --footer-hover: #ffc107;
-  --transition-smooth: color 0.3s ease;
-  
-  /* Breakpoints para consistencia */
-  --mobile-max: 480px;
-  --tablet-min: 769px;
-  --tablet-max: 1024px;
 }
 
 /* ===========================================

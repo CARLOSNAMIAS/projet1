@@ -28,135 +28,77 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+ // Mensaje de bienvenida automático
+  addMessage(
+    `¡Hola! Soy tu asistente virtual 🤖<br>
+  Por favor selecciona una opción:<br>
+  1️⃣ Soporte técnico<br>
+  2️⃣ Hacer un pedido<br>
+  3️⃣ Ver productos disponibles`,
+    "bot"
+  );
+
+
+
+
+ 
+
+
   // Función para obtener la respuesta del bot
   function getBotResponse(userMessage) {
     const lowerMessage = userMessage.toLowerCase();
 
-    const responses = [
-      {
-        keyword: "hello",
-        response: "¡Hola! ¿En qué puedo ayudarte hoy?",
-      },
-      {
-        keyword: "comida",
-        response: "Como puedo ayudarte con la comida?",
-      },
-      {
-        keyword: "ayuda",
-        response:
-          "Claro, dime qué tipo de ayuda necesitas seleciona 1 soporte en linea",
-      },
-
-      {
-        keyword: "soporte",
-        response: "Estoy aquí para brindarte soporte técnico.",
-      },
-
-      {
-        keyword: "hamburguesa",
-        response: "¿Cual deseas ordenar?",
-      },
-
-      {
-        keyword: "😠",
-        response: "¿Porque estás enojado?",
-      },
-
-      {
-        keyword: "tengo hambre",
-        response: "¿Tranquilo que deseas ordenar?",
-      },
-
-      {
-        keyword: "domicilio",
-        response: "¿En breve te atenderemos?",
-      },
-
-      {
-        keyword: "1",
-        response:
-          "¿Hola soy tu soporte especializado dime en que puedo ayudarte?",
-      },
-
-      // Respuesta para saludos
-      {
-        keyword: "hola",
-        response: "¡Hola! ¿En qué puedo ayudarte hoy? 👋",
-      },
-
-      // Preguntas frecuentes
-      {
-        keyword: "preguntas frecuentes",
-        response:
-          "Aquí tienes las opciones de ayuda:\n1️⃣ Información sobre horarios de entrega\n2️⃣ Preguntas sobre productos\n3️⃣ Conoce más sobre nuestras ofertas",
-      },
-      {
-        keyword: "comida",
-        response:
-          "¿Te gustaría ordenar comida? 🍔🥤 ¿En qué puedo ayudarte?",
-      },
-
-      // Quejas y reclamos
-      {
-        keyword: "queja",
-        response:
-          "Lamentamos que hayas tenido inconvenientes 😔. Por favor, proporciona más detalles para ayudarte con tu queja.",
-      },
-      {
-        keyword: "reclamo",
-        response:
-          "Estamos aquí para escucharte. Por favor, cuéntanos más sobre tu situación para resolverla lo antes posible.",
-      },
-
-      // Soporte especializado
-      {
-        keyword: "soporte",
-        response:
-          "¡Claro! Por favor selecciona una de las opciones:\n1️⃣ Soporte técnico especializado\n2️⃣ Información general",
-      },
-
-      {
-        keyword: "1",
-        response:
-          "¡Has seleccionado soporte especializado! Por favor, cuéntanos tu problema para ofrecerte una solución rápida.",
-      },
-
-      {
-        keyword: "2",
-        response:
-          "¡Listo! Te brindaremos información general para ayudarte. ¿Qué necesitas saber?",
-      },
-
-      // Otras respuestas
-      {
-        keyword: "hamburguesa",
-        response:
-          "¡Excelente elección! 🍔 ¿Qué tipo de hamburguesa deseas ordenar hoy?",
-      },
-      {
-        keyword: "tengo hambre",
-        response: "¡Tranquilo! 🍽️ ¿Qué te gustaría pedir?",
-      },
-      {
-        keyword: "domicilio",
-        response:
-          "En breve atenderemos tu solicitud de domicilio 🚀. ¿Puedes proporcionarnos más información?",
-      },
-      {
-        keyword: "🤬",
-        response:
-          "Veo que estás molesto 😕. Si algo te preocupa, cuéntamelo para ayudarte.",
-      },
-    ];
-
-    for (const { keyword, response } of responses) {
-      if (lowerMessage.includes(keyword)) {
-        return response;
-      }
+    // Saludo inicial
+    if (["hola", "buenas", "hey", "holi"].some(g => lowerMessage.includes(g))) {
+      return `
+      ¡Hola! Soy tu asistente virtual 🤖<br>
+      Por favor selecciona una opción:<br>
+      1️⃣ Soporte técnico<br>
+      2️⃣ Hacer un pedido<br>
+      3️⃣ Ver productos disponibles
+    `;
     }
 
-    return "Lo siento, no entendí tu mensaje.";
+    // Opciones principales
+    if (lowerMessage === "1") {
+      return "🛠️ Has seleccionado soporte técnico. ¿En qué puedo ayudarte?";
+    }
+
+    if (lowerMessage === "2") {
+      return "🍔 ¡Genial! ¿Qué te gustaría pedir? Puedes escribir 'hamburguesa', 'combo', o 'bebida'.";
+    }
+
+    if (lowerMessage === "3") {
+      return "📋 Estos son nuestros productos:\n- Hamburguesa clásica 🍔\n- Combo doble 🍟🥤\n- Bebida fría 🧊\nEscribe el nombre del producto para más detalles.";
+    }
+
+    // Productos específicos
+    if (lowerMessage.includes("hamburguesa")) {
+      return "Nuestra hamburguesa clásica tiene carne 100% de res, lechuga, tomate y salsa especial. ¿Quieres agregarla al pedido?";
+    }
+
+    if (lowerMessage.includes("combo")) {
+      return "El combo doble incluye 2 hamburguesas, papas grandes y bebida. ¿Lo deseas?";
+    }
+
+    if (lowerMessage.includes("bebida")) {
+      return "Tenemos bebidas frías como cola, limonada y té helado. ¿Cuál prefieres?";
+    }
+
+    // Emojis comunes
+    if (lowerMessage.includes("😠") || lowerMessage.includes("🤬")) {
+      return "😟 Lo siento si algo no salió bien. ¿Quieres ayuda con un reclamo?";
+    }
+
+    // Ayuda general
+    if (lowerMessage.includes("ayuda")) {
+      return "Estoy aquí para ayudarte. ¿Quieres soporte técnico (1) o hacer un pedido (2)?";
+    }
+
+    // Fallback
+    return "No entendí tu mensaje 😅. Por favor escribe un número de opción o una palabra clave como 'hamburguesa', 'pedido' o 'ayuda'.";
   }
+
 
   // Evento para enviar texto
   chatSendBtn.addEventListener("click", () => {
@@ -476,7 +418,7 @@ class CarritoCompras {
 
 
 
-  
+
   actualizarVista() {
     // Actualizar contador del carrito flotante
     const contador = document.querySelector('.carrito-contador');
@@ -607,7 +549,7 @@ class CarritoCompras {
 
   confirmarPedido() {
     const form = document.getElementById('formPago');
-    
+
     // Validar formulario
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -686,7 +628,7 @@ class CarritoCompras {
     `;
 
     document.body.appendChild(confirmacion);
-    
+
     const confirmacionModal = new bootstrap.Modal(document.getElementById('confirmacionModal'));
     confirmacionModal.show();
 
@@ -796,4 +738,3 @@ estilosToast.textContent = `
 `;
 document.head.appendChild(estilosToast);
 
- 
