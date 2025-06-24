@@ -962,3 +962,28 @@ body, html {
         max-width: none;
     }
 }
+
+.carrito-navbar {
+  position: relative; /* Necesario para que el contador se posicione respecto a este contenedor */
+  display: inline-block;
+}
+
+#carrito-contador {
+  position: absolute;
+  top: -8px;   /* Ajusta según lo necesites */
+  right: -8px; /* Ajusta según lo necesites */
+  background-color: #f6e01d;
+  color: rgb(10, 10, 10);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 6px;
+  border-radius: 60%;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  transition: transform 0.2s;
+}

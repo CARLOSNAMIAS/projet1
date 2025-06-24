@@ -416,48 +416,54 @@ class CarritoCompras {
   }
 
 
+actualizarVista() {
+  // Calcular total de ítems
+  const totalItems = this.items.reduce((suma, item) => suma + item.cantidad, 0);
 
+  // ✅ Actualizar todos los contadores de carrito
+  const contadores = document.querySelectorAll('.carrito-contador, #carrito-contador');
+  contadores.forEach(contador => {
+    contador.textContent = totalItems;
+    // Efecto de animación visual (opcional)
+    contador.classList.remove('contador-animado');
+    void contador.offsetWidth; // Reinicia animación
+    contador.classList.add('contador-animado');
+  });
 
-
-  actualizarVista() {
-    // Actualizar contador del carrito flotante
-    const contador = document.querySelector('.carrito-contador');
-    if (contador) {
-      const totalItems = this.items.reduce((suma, item) => suma + item.cantidad, 0);
-      contador.textContent = totalItems;
-    }
-
-    // Actualizar items del carrito
-    const carritoItems = document.getElementById('carrito-items');
-    if (carritoItems) {
-      if (this.items.length === 0) {
-        carritoItems.innerHTML = '<p class="text-center">Tu carrito está vacío</p>';
-      } else {
-        carritoItems.innerHTML = this.items.map(item => `
-                    <div class="carrito-item d-flex align-items-center mb-3 p-3 border rounded">
-                        <img src="${item.imagen}" alt="${item.nombre}" class="carrito-item-img me-3" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div class="flex-grow-1">
-                            <h6>${item.nombre}</h6>
-                            <p class="text-muted small mb-1">${item.descripcion.substring(0, 100)}...</p>
-                            <p class="mb-0"><strong>${this.formatearPrecio(item.precio)}</strong></p>
-                        </div>
-                        <div class="cantidad-controls">
-                            <button class="btn btn-sm btn-outline-secondary" onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad - 1})">-</button>
-                            <span class="mx-2">${item.cantidad}</span>
-                            <button class="btn btn-sm btn-outline-secondary" onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad + 1})">+</button>
-                        </div>
-                        <button class="btn btn-sm btn-danger ms-2" onclick="carrito.eliminarProducto('${item.id}')">🗑️</button>
-                    </div>
-                `).join('');
-      }
-    }
-
-    // Actualizar total
-    const totalElement = document.getElementById('carrito-total');
-    if (totalElement) {
-      totalElement.textContent = this.formatearPrecio(this.total);
+  // Mostrar contenido del carrito
+  const carritoItems = document.getElementById('carrito-items');
+  if (carritoItems) {
+    if (this.items.length === 0) {
+      carritoItems.innerHTML = '<p class="text-center">Tu carrito está vacío</p>';
+    } else {
+      carritoItems.innerHTML = this.items.map(item => `
+        <div class="carrito-item d-flex align-items-center mb-3 p-3 border rounded">
+          <img src="${item.imagen}" alt="${item.nombre}" class="carrito-item-img me-3" style="width: 80px; height: 80px; object-fit: cover;">
+          <div class="flex-grow-1">
+            <h6>${item.nombre}</h6>
+            <p class="text-muted small mb-1">${item.descripcion.substring(0, 100)}...</p>
+            <p class="mb-0"><strong>${this.formatearPrecio(item.precio)}</strong></p>
+          </div>
+          <div class="cantidad-controls">
+            <button class="btn btn-sm btn-outline-secondary" onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad - 1})">-</button>
+            <span class="mx-2">${item.cantidad}</span>
+            <button class="btn btn-sm btn-outline-secondary" onclick="carrito.actualizarCantidad('${item.id}', ${item.cantidad + 1})">+</button>
+          </div>
+          <button class="btn btn-sm btn-danger ms-2" onclick="carrito.eliminarProducto('${item.id}')">🗑️</button>
+        </div>
+      `).join('');
     }
   }
+
+  // Actualizar total
+  const totalElement = document.getElementById('carrito-total');
+  if (totalElement) {
+    totalElement.textContent = this.formatearPrecio(this.total);
+  }
+}
+
+// MÉTODO MEJORADO: Mostrar mensaje de producto agregado
+
 
   mostrarMensajeAgregado(nombreProducto) {
     // Crear toast de notificación
