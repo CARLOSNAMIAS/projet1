@@ -319,6 +319,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+
+
+
+
   // Evento para enviar emojis
   emojiPanel.forEach((emoji) => {
     emoji.addEventListener("click", function () {
@@ -338,6 +342,10 @@ document.getElementById("toggleEmojiPanel").addEventListener("click", function (
   const emojiPanel = document.getElementById("emojiPanel");
   emojiPanel.classList.toggle("hidden");
 });
+
+
+
+
 
 // Funcionalidad de arrastre del modal
 document.addEventListener("DOMContentLoaded", function () {
@@ -373,7 +381,16 @@ document.addEventListener("DOMContentLoaded", function () {
     document.removeEventListener("mouseup", onMouseUp);
   };
 });
-// Carrito de Compras para Hamburguesas
+
+
+
+
+
+
+
+// ==== Carrito de Compras para Hamburguesas ==== //
+
+
 class CarritoCompras {
   constructor() {
     this.items = [];
@@ -946,4 +963,9 @@ estilosToast.textContent = `
   }
 `;
 document.head.appendChild(estilosToast);
+
+
+
+
+
 

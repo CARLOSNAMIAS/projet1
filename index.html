@@ -57,7 +57,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <meta name="theme-color" content=" #48110d">
   <!-- URL Canónica -->
-  <link rel="canonical" href="https://tudominio.com">
+  <link rel="canonical" href="https://carlosnamias.github.io/menu/">
 
 
 <body>
@@ -74,9 +74,19 @@
       border-radius: 8px;
     }
 
+    /* Efecto de zoom al pasar el mouse */
+    .product-image img:hover {
+      transform: scale(1.1);
+    }
+
+
+
+
     /* Descripción del producto */
     .product-description {
       text-align: justify;
+
+
     }
 
     .product-description h5 {
@@ -118,11 +128,13 @@
       background-color: #f58b2d;
       color: #fff;
       border: none;
-      padding: 4px 8px;
-      font-size: 0.8rem;
-      border-radius: 5px;
+      padding: 8px 8px;
+      font-size: 0.7rem;
+      border-radius: 4px;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      position: relative;
+
       /* Transición suave */
     }
 
@@ -288,6 +300,61 @@
         padding: 3px 6px;
       }
     }
+
+
+    /* Offcanvas: ancho al 50% */
+    #offcanvasMenu {
+      width: 50vw !important;
+      max-width: 100%;
+    }
+
+    
+
+
+    /* Fondo y color del contenido */
+    #offcanvasMenu .offcanvas-body {
+      color: #48110d;
+      font-size: 0.95rem;
+      text-align: justify;
+      line-height: 1.5;
+      
+    }
+
+    /* Título */
+    #offcanvasMenu .offcanvas-title a {
+      color: #48110d;
+      font-weight:300;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+     
+      
+    }
+
+    /* Iconos dentro del menú */
+    #offcanvasMenu .nav-link i {
+      color: #48110d;
+      font-size: 1.1rem;
+    }
+
+    /* Enlaces del menú */
+    #offcanvasMenu .nav-link {
+      color: #48110d;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    #offcanvasMenu .nav-link:hover {
+      text-decoration: underline;
+      color: #722f17;
+    }
+
+    /* Botón de cerrar */
+    #offcanvasMenu .btn-close {
+      filter: brightness(0.5);
+    }
   </style>
   <!-- PRIMER NAVBAR  -->
   <nav class="navbar navbar-expand-lg" style="background-color: #48110d">
@@ -318,8 +385,8 @@
           <div class="offcanvas-header">
             <h5 class="offcanvas-title d-flex align-items-center" id="offcanvasMenuLabel">
               <!-- Icono de persona antes del texto -->
-              <a href="#" class="text-decoration-none text-dark">Inicio de sesión<i
-                  class="bi bi-person-fill ms-4"></i></a>
+              <a href="#" class="text-decoration-none text-dark">Inicio de sesión<i>
+                </i></a>
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
           </div>
@@ -762,7 +829,7 @@
                   <img src="./img/corralito1.jpg" alt="Imagen del producto" class="img-fluid" />
                 </div>
                 <div class="product-description flex-grow-1 text-center">
-                  <h5>BBQ Crunchy en combo</h5>
+                  <h5>Corralito Crunchy en combo</h5>
                   <p>
                     Hamburguesa de 125 g de carne 100% de res, cebollitas
                     crujientes, una rodaja de tomate, lechuga en julianas,
@@ -781,7 +848,7 @@
                   <img src="./img/corralito2.jpg" alt="Imagen del producto" class="img-fluid" />
                 </div>
                 <div class="product-description flex-grow-1 text-center">
-                  <h5>Corralazo Granjera en Combo</h5>
+                  <h5>corralito Granjera en Combo</h5>
                   <p>
                     Hamburguesa de 125 g de carne 100% de res, tomate en
                     rodajas, papa ripio, un huevo frito, salsas blanca y de
@@ -799,7 +866,7 @@
                   <img src="./img/corralito1.jpg" alt="Imagen del producto" class="img-fluid" />
                 </div>
                 <div class="product-description flex-grow-1 text-center">
-                  <h5>Corral en combo</h5>
+                  <h5>corralito en combo</h5>
                   <p>
                     Hamburguesa de 125 g de carne 100% de res, con verduras y
                     salsas en pan ajonjolí + papas medianas (Corral o cascos)
@@ -1136,10 +1203,10 @@
                 <span class="emoji">🤬</span>
               </div>
             </figure>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <!--footer-->
@@ -1183,8 +1250,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <script src="./chatbot.js"></script>
   <script src="./script.js"></script>
+
+
+
 
 </body>
 
