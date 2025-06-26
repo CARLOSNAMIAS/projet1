@@ -308,7 +308,6 @@
       max-width: 100%;
     }
 
-    
 
 
     /* Fondo y color del contenido */
@@ -323,13 +322,13 @@
     /* Título */
     #offcanvasMenu .offcanvas-title a {
       color: #48110d;
-      font-weight:300;
+      font-weight: 300;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 0.2rem;
-     
-      
+
+
     }
 
     /* Iconos dentro del menú */
@@ -354,6 +353,13 @@
     /* Botón de cerrar */
     #offcanvasMenu .btn-close {
       filter: brightness(0.5);
+    }
+
+
+    @media (min-width: 768px) {
+      .offcanvas-body {
+        display: none !important;
+      }
     }
   </style>
   <!-- PRIMER NAVBAR  -->
@@ -384,7 +390,7 @@
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title d-flex align-items-center" id="offcanvasMenuLabel">
-              <!-- Icono de persona antes del texto -->
+
               <a href="#" class="text-decoration-none text-dark">Inicio de sesión<i>
                 </i></a>
             </h5>
