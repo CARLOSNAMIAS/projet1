@@ -386,8 +386,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
 // ==== Carrito de Compras para Hamburguesas ==== //
 
 
