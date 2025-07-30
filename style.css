@@ -1,24 +1,67 @@
-
-/* ===========================================
-   VARIABLES CSS (Opcional - para mejor mantenimiento)
-   =========================================== */
+/* ===================================================
+   VARIABLES CSS GLOBALES
+   =================================================== */
 :root {
-  --primary-bg: #48110d;
-  --secondary-bg: #2e0e0c;
-  --accent-color: #ffd700;
-  --search-accent: #f1ee0c;
-  --text-primary: #ffffff;
-  --text-secondary: #973216;
-  --text-accent: #fbff1f;
+  /* Colores principales */
+  --primary-color: #48110d; /* Color principal oscuro (ej. para fondos de navbar, headers) */
+  --secondary-color: #f9f9f9; /* Color secundario claro (ej. para fondos de secciones) */
+  --accent-color: #ecb78b; /* Color de acento general (ej. para hover, elementos interactivos) */
+  --search-accent: #f1ee0c; /* Color de acento específico para la barra de búsqueda */
+
+  /* Colores de texto */
+  --text-primary: #ffffff; /* Texto principal claro */
+  --text-secondary: #973216; /* Texto secundario (ej. en offcanvas) */
+  --text-dark: #48110d; /* Texto oscuro (ej. para títulos de menú) */
+  --text-accent: #fbff1f; /* Texto de acento (ej. en offcanvas title) */
+  --text-light: #f1f1f1; /* Texto claro (ej. para mensajes de chat) */
+
+  /* Bordes y sombras */
+  --border-color: #a4a2a2; /* Color de borde general */
+  --shadow-color: rgba(0, 0, 0, 0.169); /* Color de sombra general */
+
+  /* Colores de estado */
+  --success-color: #28a745; /* Color para acciones exitosas */
+
+  /* Fondos de modales */
+  --modal-bg: rgba(0, 0, 0, 0.427); /* Fondo para modales generales */
+  --modal-bg-mobile: rgba(0, 0, 0, 0.8); /* Fondo para modales en móvil */
+  --modal-bg-chatbot: #ffffff59; /* Fondo específico para el modal del chatbot */
+
+  /* Transiciones */
+  --transition-smooth: all 0.3s ease; /* Transición suave para la mayoría de los elementos */
+  --transition-quick: all 0.2s ease; /* Transición rápida para elementos interactivos */
+
+  /* Puntos de quiebre para responsive (opcional, si se usan en JS o para referencia) */
+  --mobile-max: 380px;
+  --tablet-min: 769px;
+  --tablet-max: 1024px;
 }
 
-/* ===========================================
+/* ===================================================
+   RESET BÁSICO Y ESTILOS GLOBALES
+   =================================================== */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Previene el scroll horizontal */
+}
+
+
+
+.custom-navbar {
+  background-color: #48110d;
+}
+
+
+/* ===================================================
    NAVBAR PRINCIPAL
-   =========================================== */
-
-
+   =================================================== */
 .navbar {
-  background-color: var(--primary-bg);
+  background-color: var(
+    --primary-color
+  ); /* Usa el color principal definido en las variables */
   padding: 10px 20px;
 }
 
@@ -32,9 +75,7 @@
   color: var(--accent-color);
 }
 
-/* ===========================================
-   ELEMENTOS DE BÚSQUEDA
-   =========================================== */
+/* Elementos de búsqueda en la Navbar */
 .form-control {
   width: 150px;
   border: none;
@@ -43,7 +84,7 @@
 
 .btn-outline-light {
   border: 1px solid var(--search-accent);
-  color: #dfe209;
+  color: #dfe209; /* Color directo, considerar usar una variable si se repite */
   background-position-x: left;
 }
 
@@ -54,12 +95,14 @@
 }
 
 .btn i {
-  color: rgb(237, 215, 18);
+  color: rgb(
+    237,
+    215,
+    18
+  ); /* Color directo, considerar usar una variable si se repite */
 }
 
-/* ===========================================
-   LOGO Y ICONOS
-   =========================================== */
+/* Logo en la Navbar */
 .logo-img {
   width: 250px;
   height: auto;
@@ -67,13 +110,12 @@
   object-fit: contain;
 }
 
+/* Icono de carrito (ej. en la navbar, si es visible) */
 .bi-cart {
-  font-size: 10rem;
+  font-size: 10rem; /* Tamaño muy grande, revisar si es intencional para un uso específico */
 }
 
-/* ===========================================
-   MENÚ HAMBURGUESA
-   =========================================== */
+/* Menú Hamburguesa (Toggler) */
 .navbar-toggler {
   border: none;
   background-color: transparent;
@@ -81,18 +123,39 @@
 }
 
 .navbar-toggler-icon {
-  background-image: url("./img/hamburguesa-navbar.PNG");
+  background-image: url('./img/hamburguesa-navbar.PNG');
   background-size: 50px 50px;
   background-repeat: no-repeat;
   background-position: center;
-  filter: invert(100%);
+  filter: invert(
+    100%
+  ); /* Invierte los colores del icono para que sea visible en fondo oscuro */
 }
 
-/* ===========================================
-   OFFCANVAS (MENÚ LATERAL)
-   =========================================== */
+
+.btn-hamburguesa {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.btn-hamburguesa img {
+  width: 50px;
+  height: 50px;
+}
+
+.icon-small {
+  font-size: 15px;
+}
+
+
+
+
+
+
+/* Offcanvas (Menú Lateral Desplegable) */
 .offcanvas {
-  background-color: var(--secondary-bg);
+  background-color: var(--secondary-bg); /* Fondo del offcanvas */
   color: var(--text-secondary);
 }
 
@@ -102,7 +165,7 @@
 }
 
 .offcanvas .navbar-nav .nav-link {
-  color: var(--primary-bg);
+  color: var(--primary-color); /* Color de los enlaces en el offcanvas */
   transition: color 0.3s ease;
 }
 
@@ -110,9 +173,7 @@
   color: var(--accent-color);
 }
 
-/* ===========================================
-   ELEMENTOS ADICIONALES
-   =========================================== */
+/* Separador en la Navbar (si aplica) */
 .navbar-expand-lg {
   padding: 10px 20px;
 }
@@ -125,27 +186,9 @@
   z-index: 100;
 }
 
-
-/* ===========================================
-   VARIABLES CSS
-   =========================================== */
-:root {
-  --primary-color: #48110d;
-  --secondary-color: #f9f9f9;
-  --accent-color: #ecb78b;
-  --text-light: #f1f1f1;
-  --text-dark: #48110d;
-  --border-color: #a4a2a2;
-  --shadow-color: rgba(0, 0, 0, 0.169);
-  --success-color: #45a049;
-  --modal-bg: rgba(0, 0, 0, 0.427);
-  --transition-smooth: all 0.3s ease;
-  --transition-quick: all 0.2s ease;
-}
-
-/* ===========================================
-   TÍTULO DEL MENÚ
-   =========================================== */
+/* ===================================================
+   SECCIÓN DEL MENÚ (ACORDEÓN DE PRODUCTOS)
+   =================================================== */
 .menu-title {
   margin: 1px 0;
   padding: 0;
@@ -162,20 +205,6 @@
   }
 }
 
-
-/* ===========================================
-   ACORDEÓN / SECCIÓN DE PRODUCTOS
-   =========================================== */
-/* Reset básico para que nada interfiera */
-
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-}
-
-
 .accordion-container {
   width: 100vw;
   margin: 0;
@@ -185,12 +214,11 @@ body, html {
 }
 
 .accordion-item {
-  margin-bottom: 0.8px;
+  margin-bottom: 0.8px; /* Espacio mínimo entre ítems del acordeón */
 }
 
-
 .accordion-button {
-  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20TodoTerreno.jpg?v=20240902-002');
+  background-image: url('https://pideenlinea.elcorral.com/images/banner/banner_pasillos/Banner%20TodoTerreno.jpg?v=20240902-002'); /* Imagen de fondo para el botón del acordeón */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -202,16 +230,11 @@ body, html {
   align-items: center;
   justify-content: center;
   text-shadow: 1px 1px 1px rgba(72, 17, 13, 0.7);
-  padding-left: 0;  /* Elimina margen interno */
+  padding-left: 0;
   padding-right: 0;
 }
 
-
-
-
-/* ===========================================
-   ELEMENTOS DEL MENÚ
-   =========================================== */
+/* Ítems individuales dentro del menú */
 .menu-item {
   padding: 4px 0;
   border-bottom: 1px solid var(--border-color);
@@ -228,9 +251,30 @@ body, html {
   cursor: pointer;
   transition: var(--transition-smooth);
 }
-/* ===========================================
-   CHATBOT - IMAGEN FLOTANTE
-   =========================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================================================
+   CHATBOT (IMAGEN FLOTANTE Y MODAL)
+   =================================================== */
+/* Imagen flotante del chatbot */
 .chatbot-image img {
   width: 60px;
   height: 60px;
@@ -242,30 +286,7 @@ body, html {
   transition: transform 0.3s ease;
 }
 
-/* ===========================================
-   CHATBOT - HEADER
-  /* ===================================================
-   VARIABLES CSS
-   =================================================== */
-:root {
-  --primary-color: #48110d;
-  --accent-color: #ff6b0f61;
-  --modal-bg: #ffffff59;
-  --success-color: #28a745;
-  --text-light: #f1f1f1;
-  --shadow-color: rgba(0, 0, 0, 0.2);
-
-  --transition-smooth: all 0.3s ease;
-  --transition-quick: all 0.2s ease;
-
-  --mobile-max: 380px;
-  --tablet-min: 769px;
-  --tablet-max: 1024px;
-}
-
-/* ===================================================
-   HEADER CHATBOT
-   =================================================== */
+/* Contenedor del header del modal del chatbot */
 .chatbot-header-image-container {
   display: flex;
   justify-content: center;
@@ -275,34 +296,31 @@ body, html {
   background-color: var(--primary-color);
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  
- }
+}
 
 .chatbot-header-image {
-  width: 60%;      /* depende del contenedor */
+  width: 60%;
   max-width: 240px;
   height: auto;
 }
 
-
-/* ===================================================
-   MODAL GENERAL
-   =================================================== */
+/* Modal general del chatbot */
 .modal {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   margin: 0;
-  background-color: var(--modal-bg);
-  
+  background-color: var(
+    --modal-bg-chatbot
+  ); /* Usa la variable específica para el modal del chatbot */
   z-index: 9999;
 }
 
 .modal-dialog {
   position: relative;
   width: 100%;
-  max-width: 20rem; /* 200px */
+  max-width: 20rem; /* 320px */
 }
 
 .modal-content {
@@ -313,12 +331,9 @@ body, html {
 .modal-body {
   background-color: var(--accent-color);
   padding: 0.625rem;
- 
 }
 
-/* ===================================================
-   CONTENIDO DEL CHAT
-   =================================================== */
+/* Contenido del chat dentro del modal */
 .chat-content {
   max-height: 18.75rem; /* 300px */
   overflow-y: auto;
@@ -348,10 +363,8 @@ body, html {
   margin: 0;
 }
 
-/* ===================================================
-   ENTRADA DE TEXTO Y BOTÓN
-   =================================================== */
-  .chat-input {
+/* Entrada de texto y botón de envío del chat */
+.chat-input {
   display: flex;
   gap: 0.2rem;
 }
@@ -363,16 +376,13 @@ body, html {
   padding: 0.5rem 0.625rem !important;
   border-radius: 5px !important;
   transition: var(--transition-smooth) !important;
- 
 }
 
 .chat-send-btn:hover {
   background-color: var(--success-color) !important;
 }
 
-/* ===================================================
-   EMOJIS
-   =================================================== */
+/* Panel de emojis */
 .emoji-trigger {
   position: relative;
   display: inline-block;
@@ -411,9 +421,7 @@ body, html {
   transform: scale(1.2);
 }
 
-/* ===================================================
-   UTILIDADES
-   =================================================== */
+/* Utilidades para el chatbot */
 .hidden {
   display: none;
 }
@@ -424,11 +432,479 @@ body, html {
 }
 
 #chatbotModalHeader {
-  cursor: move;
+  cursor: move; /* Permite arrastrar el header del modal */
 }
+
 /* ===================================================
-   RESPONSIVE (MÓVIL)
+   CARRITO DE COMPRAS
    =================================================== */
+/* Botón flotante del carrito (oculto por defecto) */
+.carrito-flotante {
+  display: none !important; /* Oculta el botón flotante del carrito */
+  position: none; /* Resetea la posición si se muestra */
+  bottom: none;
+  right: none;
+  z-index: none;
+}
+
+/* Estilos del botón del carrito (general) */
+.carrito-btn {
+  border-radius: 50px;
+  padding: none; /* Considerar un padding explícito si se usa */
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: var(--transition-smooth);
+  border: none;
+  background: none;
+  color: white;
+}
+
+.carrito-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    45deg,
+    #00000000,
+    #00000000
+  ); /* Fondo transparente en hover */
+}
+
+.carrito-btn:active {
+  transform: translateY(0);
+}
+
+/* Icono del carrito (Bootstrap Icons) */
+.carrito-btn .bi-cart4 {
+  font-size: 1.4rem;
+  margin-right: 8px;
+  transition: var(--transition-smooth);
+}
+
+.modal-title .bi-cart4 {
+  font-size: 1.5rem;
+}
+
+.carrito-btn:hover .bi-cart4 {
+  transform: scale(1.1);
+}
+
+/* Contador de ítems en el carrito (en la navbar) */
+#carrito-navbar {
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 14px;
+  margin-left: auto;
+  min-width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Modal del carrito de compras */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background: linear-gradient(
+    45deg,
+    #48110d,
+    #852d01
+  ); /* Degradado para el header del modal */
+  color: white;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.btn-close {
+  filter: brightness(0) invert(1); /* Invierte el color del botón de cerrar */
+}
+
+/* Ítems individuales dentro del carrito */
+.carrito-item {
+  transition: var(--transition-smooth);
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  background: #f8f9fa;
+}
+
+.carrito-item:hover {
+  border-color: var(--success-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.1);
+}
+
+.carrito-item-img {
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #dee2e6;
+}
+
+.carrito-item h6 {
+  color: #2c3e50; /* Color directo, considerar variable */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.carrito-item .text-muted {
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+/* Controles de cantidad de ítems en el carrito */
+.cantidad-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cantidad-controls button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid var(--success-color);
+  background: white;
+  color: var(--success-color);
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.cantidad-controls button:hover {
+  background: var(--success-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.cantidad-controls span {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2c3e50; /* Color directo, considerar variable */
+  min-width: 25px;
+  text-align: center;
+}
+
+/* Botón de eliminar ítem del carrito */
+.btn-danger {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: var(--transition-smooth);
+}
+
+.btn-danger:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* Sección del total del carrito */
+.carrito-total {
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid var(--success-color);
+  text-align: center;
+}
+
+.carrito-total h4 {
+  color: #2c3e50; /* Color directo, considerar variable */
+  font-weight: bold;
+  margin: 0;
+}
+
+#carrito-total {
+  color: var(--success-color);
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Footer del modal del carrito */
+.modal-footer {
+  border-top: none;
+  padding: 20px;
+  gap: 10px;
+}
+
+.modal-footer .btn {
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: var(--transition-smooth);
+}
+
+.btn-success {
+  background: linear-gradient(45deg, #28a745, #20c997);
+  border: none;
+}
+
+.btn-success:hover {
+  background: linear-gradient(45deg, #218838, #1bb394);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(45deg, #6c757d, #adb5bd);
+  border: none;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(45deg, #545b62, #9aa0a7);
+  transform: translateY(-2px);
+}
+
+/* Botón de peligro (ej. vaciar carrito) en el footer del modal */
+.btn-danger {
+  background: linear-gradient(45deg, #dc3545, #fd7e14);
+  border: none;
+  border-radius: 25px !important; /* Sobrescribe el border-radius anterior para este contexto */
+  width: auto !important; /* Sobrescribe el ancho anterior */
+  height: auto !important; /* Sobrescribe la altura anterior */
+}
+
+.btn-danger:hover {
+  background: linear-gradient(45deg, #c82333, #e66400);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* Notificaciones Toast */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  max-width: 350px;
+  animation: slideIn 0.4s ease-out;
+}
+
+.toast-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+  padding: 15px 20px;
+}
+
+/* Estado vacío del carrito */
+.carrito-vacio {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d; /* Color directo, considerar variable */
+}
+
+.carrito-vacio i {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Contador de carrito en la navbar (posición relativa) */
+.carrito-navbar {
+  position: relative; /* Necesario para que el contador se posicione respecto a este contenedor */
+  display: inline-block;
+}
+
+#carrito-contador {
+  position: absolute;
+  top: -8px; /* Ajusta según lo necesites */
+  right: -8px; /* Ajusta según lo necesites */
+  background-color: #f6e01d; /* Color directo, considerar variable */
+  color: rgb(10, 10, 10); /* Color directo, considerar variable */
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 6px;
+  border-radius: 60%;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  pointer-events: none; /* Permite hacer clic a través del contador */
+  transition: transform 0.2s;
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+.custom-footer {
+  background-color: var(
+    --primary-color
+  ) !important; /* Color fijo y forzado para el footer */
+  color: #ffffff;
+  padding: 40px 20px;
+  font-size: 0.95rem;
+}
+
+.custom-footer h5,
+.custom-footer p,
+.custom-footer a {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.custom-footer a:hover {
+  color: #ffc107; /* Color directo, considerar variable */
+  text-decoration: underline;
+}
+
+.custom-footer .social-media i {
+  font-size: 1.5rem;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.custom-footer .social-media i:hover {
+  color: #ffc107; /* Color directo, considerar variable */
+}
+
+/* ===================================================
+   MEDIA QUERIES (RESPONSIVE DESIGN)
+   =================================================== */
+/* Estilos para dispositivos móviles (hasta 480px de ancho) */
+@media (max-width: 480px) {
+  .logo-img {
+    width: 150px;
+    max-height: 120px;
+  }
+
+  .accordion-button {
+    font-size: 14px;
+    min-height: 120px;
+  }
+
+  .form-control {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .custom-footer {
+    padding: 20px 15px;
+  }
+
+  .custom-footer h5 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .custom-footer .col-md-3,
+  .custom-footer .col-md-6 {
+    margin-bottom: 20px;
+  }
+}
+
+/* Estilos para dispositivos móviles pequeños (hasta 320px de ancho) */
+@media (max-width: 320px) {
+  .logo-img {
+    width: 120px;
+    max-height: 100px;
+  }
+
+  .accordion-button {
+    font-size: 12px;
+    min-height: 100px;
+    padding: 8px;
+  }
+
+  .custom-footer h5 {
+    font-size: 1rem;
+  }
+
+  .social-media h5 {
+    margin-bottom: 8px;
+  }
+}
+
+/* Estilos para tabletas (entre 769px y 1024px de ancho) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo-img {
+    width: 200px;
+    max-height: 140px;
+  }
+
+  .form-control {
+    width: 200px;
+  }
+
+  .accordion-button {
+    min-height: 160px;
+  }
+
+  .custom-footer {
+    padding: 30px 20px;
+  }
+}
+
+/* Estilos para escritorios (a partir de 1025px de ancho) */
+@media (min-width: 1025px) {
+  .custom-footer {
+    padding: 40px 0;
+  }
+
+  .logo-img {
+    width: 250px;
+  }
+
+  .form-control {
+    width: 150px;
+  }
+}
+
+/* Estilos responsive específicos para el chatbot y carrito (hasta 768px de ancho) */
 @media (max-width: 768px) {
   .chatbot-image img {
     width: 3.75rem; /* 60px */
@@ -438,7 +914,9 @@ body, html {
   }
 
   .modal {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(
+      --modal-bg-mobile
+    ); /* Fondo más oscuro para el modal en móvil */
     width: 100%;
     bottom: 0;
     left: 0;
@@ -473,521 +951,46 @@ body, html {
     padding: 0.4rem !important;
     font-size: 0.875rem !important;
   }
-}
 
-/* ===========================================
-   FOOTER
-   =========================================== */
-
-.custom-footer {
-  background-color: #48110d !important;  /* ✅ color fijo y forzado */
-  color: #ffffff;
-  padding: 40px 20px;
-  font-size: 0.95rem;
-}
-
-.custom-footer h5,
-.custom-footer p,
-.custom-footer a {
-  color: #ffffff;
-  margin-bottom: 8px;
-}
-
-.custom-footer a:hover {
-  color: #ffc107;
-  text-decoration: underline;
-}
-
-.custom-footer .social-media i {
-  font-size: 1.5rem;
-  margin: 0 6px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.custom-footer .social-media i:hover {
-  color: #ffc107;
-}
-
-/* ===========================================
-   MEDIA QUERIES - MÓVIL
-   =========================================== */
-@media (max-width: 480px) {
-  .logo-img {
-    width: 150px;
-    max-height: 120px;
+  .carrito-flotante {
+    bottom: 15px;
+    right: 15px;
   }
 
-  .accordion-button {
-    font-size: 14px;
-    min-height: 120px;
-  }
-
-  .form-control {
-    width: 100%;
-    min-width: auto;
-  }
-  
-  .custom-footer {
-    padding: 20px 15px;
-  }
-  
-  .custom-footer h5 {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-  }
-  
-  .custom-footer .col-md-3,
-  .custom-footer .col-md-6 {
-    margin-bottom: 20px;
-  }
-}
-
-/* ===========================================
-   MEDIA QUERIES - TABLET
-   =========================================== */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .logo-img {
-    width: 200px;
-    max-height: 140px;
-  }
-
-  .form-control {
-    width: 200px;
-  }
-  
-  .accordion-button {
-    min-height: 160px;
-  }
-  
-  .custom-footer {
-    padding: 30px 20px;
-  }
-}
-
-/* ===========================================
-   MEDIA QUERIES - DESKTOP
-   =========================================== */
-@media (min-width: 1025px) {
-  .custom-footer {
-    padding: 40px 0;
-  }
-  
-  .logo-img {
-    width: 250px;
-  }
-  
-  .form-control {
-    width: 150px;
-  }
-}
-
-/* ===========================================
-   MEDIA QUERIES ADICIONALES - MÓVIL PEQUEÑO
-   =========================================== */
-@media (max-width: 320px) {
-  .logo-img {
-    width: 120px;
-    max-height: 100px;
-  }
-  
-  .accordion-button {
-    font-size: 12px;
-    min-height: 100px;
-    padding: 8px;
-  }
-  
-  .custom-footer h5 {
-    font-size: 1rem;
-  }
-  
-  .social-media h5 {
-    margin-bottom: 8px;
-  }
-}
-
-
-
-
-
-
-
-
-/* ===== ESTILOS DEL CARRITO DE COMPRAS ===== */
-
-
-
-.carrito-flotante {
-  display: none !important;
-}
- 
-/* Carrito flotante */
-.carrito-flotante {
-    position: none;
-    bottom: none;
-    right: none;
-    z-index: none;
-}
-
-/* es el botón del carrito oculto dejar en displey none ! important */
-
-.carrito-btn {
-    border-radius: 50px;
-    padding: none;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    border: none;
-    background: none;
-    color: white;
-}
-
-.carrito-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(45deg, #00000000, #00000000);
-}
-
-.carrito-btn:active {
-    transform: translateY(0);
-}
-
-/* Icono del carrito con Bootstrap Icons */
-.carrito-btn .bi-cart4 {
-    font-size: 1.4rem;
-    margin-right: 8px;
-    transition: all 0.3s ease;
-}
-
-.modal-title .bi-cart4 {
-    font-size: 1.5rem;
-}
-
-.carrito-btn:hover .bi-cart4 {
-    transform: scale(1.1);
-}
-
-/* Contador del carrito */
-#carrito-navbar {
-   
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 14px;
-    margin-left: auto;
-    min-width: 20px;
-    display: inline-block;
-    text-align: center;
-}
-
-/* Modal del carrito */
-.modal-content {
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.modal-header {
-    background: linear-gradient(45deg, #48110d, #852d01);
-    color: white;
-    border-radius: 15px 15px 0 0;
-    border-bottom: none;
-}
-
-.modal-title {
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
-.btn-close {
-    filter: brightness(0) invert(1);
-}
-
-/* Items del carrito */
-.carrito-item {
-    transition: all 0.3s ease;
-    border: 2px solid #e9ecef;
-    border-radius: 12px;
-    background: #f8f9fa;
-}
-
-.carrito-item:hover {
-    border-color: #28a745;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.1);
-}
-
-.carrito-item-img {
-    border-radius: 10px;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border: 2px solid #dee2e6;
-}
-
-.carrito-item h6 {
-    color: #2c3e50;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.carrito-item .text-muted {
-    font-size: 0.85rem;
-    line-height: 1.3;
-}
-
-/* Controles de cantidad */
-.cantidad-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.cantidad-controls button {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 2px solid #28a745;
-    background: white;
-    color: #28a745;
-    font-weight: bold;
-    transition: all 0.2s ease;
-}
-
-.cantidad-controls button:hover {
-    background: #28a745;
-    color: white;
-    transform: scale(1.1);
-}
-
-.cantidad-controls span {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #2c3e50;
-    min-width: 25px;
-    text-align: center;
-}
-
-/* Botón eliminar */
-.btn-danger {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .carrito-btn {
+    padding: 10px 15px;
     font-size: 16px;
-    transition: all 0.3s ease;
-}
+  }
 
-.btn-danger:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-}
+  .modal-lg {
+    max-width: 95%;
+    margin: 10px auto;
+  }
 
-/* Total del carrito */
-.carrito-total {
-    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-    padding: 20px;
-    border-radius: 12px;
-    border: 2px solid #28a745;
+  .carrito-item {
+    flex-direction: column;
     text-align: center;
-}
+    gap: 15px;
+  }
 
-.carrito-total h4 {
-    color: #2c3e50;
-    font-weight: bold;
-    margin: 0;
-}
+  .carrito-item-img {
+    width: 100px;
+    height: 100px;
+  }
 
-#carrito-total {
-    color: #28a745;
-    font-size: 1.8rem;
-    font-weight: bold;
-}
+  .modal-footer {
+    flex-direction: column;
+  }
 
-/* Footer del modal */
-.modal-footer {
-    border-top: none;
-    padding: 20px;
-    gap: 10px;
-}
+  .modal-footer .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 
-.modal-footer .btn {
-    border-radius: 25px;
-    padding: 10px 20px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.btn-success {
-    background: linear-gradient(45deg, #28a745, #20c997);
-    border: none;
-}
-
-.btn-success:hover {
-    background: linear-gradient(45deg, #218838, #1bb394);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
-}
-
-.btn-secondary {
-    background: linear-gradient(45deg, #6c757d, #adb5bd);
-    border: none;
-}
-
-.btn-secondary:hover {
-    background: linear-gradient(45deg, #545b62, #9aa0a7);
-    transform: translateY(-2px);
-}
-
-.btn-danger {
-    background: linear-gradient(45deg, #dc3545, #fd7e14);
-    border: none;
-    border-radius: 25px !important;
-    width: auto !important;
-    height: auto !important;
-}
-
-.btn-danger:hover {
-    background: linear-gradient(45deg, #c82333, #e66400);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
-}
-
-/* Notificaciones toast */
-.toast-notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    max-width: 350px;
-    animation: slideIn 0.4s ease-out;
-}
-
-.toast-content {
-    border-radius: 12px;
-    border: none;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    font-weight: bold;
-    padding: 15px 20px;
-}
-
-/* Estado vacío del carrito */
-.carrito-vacio {
-    text-align: center;
-    padding: 40px 20px;
-    color: #6c757d;
-}
-
-.carrito-vacio i {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    opacity: 0.5;
-}
-
-/* Animaciones */
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .carrito-flotante {
-        bottom: 15px;
-        right: 15px;
-    }
-    
-    .carrito-btn {
-        padding: 10px 15px;
-        font-size: 16px;
-    }
-    
-    .modal-lg {
-        max-width: 95%;
-        margin: 10px auto;
-    }
-    
-    .carrito-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-    
-    .carrito-item-img {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .modal-footer {
-        flex-direction: column;
-    }
-    
-    .modal-footer .btn {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    .toast-notification {
-        top: 10px;
-        right: 10px;
-        left: 10px;
-        max-width: none;
-    }
-}
-
-.carrito-navbar {
-  position: relative; /* Necesario para que el contador se posicione respecto a este contenedor */
-  display: inline-block;
-}
-
-#carrito-contador {
-  position: absolute;
-  top: -8px;   /* Ajusta según lo necesites */
-  right: -8px; /* Ajusta según lo necesites */
-  background-color: #f6e01d;
-  color: rgb(10, 10, 10);
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 4px 6px;
-  border-radius: 60%;
-  min-width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-  transition: transform 0.2s;
+  .toast-notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
 }

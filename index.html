@@ -47,7 +47,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/logo_old.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/logo_old.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/logo_old.png">
-  <link rel="manifest" href="./img/logo_old.png">
+  <link rel="manifest" href="./manifest.webmanifest">
 
 
   <!-- CSS y Bootstrap -->
@@ -316,7 +316,7 @@
       font-size: 0.95rem;
       text-align: justify;
       line-height: 1.5;
-      
+
     }
 
     /* Título */
@@ -363,7 +363,8 @@
     }
   </style>
   <!-- PRIMER NAVBAR  -->
-  <nav class="navbar navbar-expand-lg" style="background-color: #48110d">
+  <nav class="navbar navbar-expand-lg custom-navbar">
+
     <div class="container-fluid">
       <!-- Logo del restaurante -->
       <a class="navbar-brand text-white" href="home.html">
@@ -382,9 +383,10 @@
 
         <!-- Botón de menú hamburguesa (visible solo en pantallas pequeñas) -->
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu"
-          class="d-md-none" style="border: none; background: transparent; padding: 0">
-          <img src="./img/hamburguesa-navbar.PNG" alt="Menú" style="width: 50px; height: 50px" />
+          class="d-md-none btn-hamburguesa">
+          <img src="./img/hamburguesa-navbar.PNG" alt="Menú" />
         </button>
+
 
         <!-- Offcanvas para el menú -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
@@ -425,14 +427,15 @@
   <!-- Segundo navbar solo con la barra de búsqueda -->
 
   <!-- Lista de hamburguesas -->
-  <nav class="navbar navbar-expand-lg" style="background-color: #48110d">
+  <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container-fluid justify-content-center">
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar en el menú" aria-label="Search" />
-        <button type="submit" class="btn">
-          <i class="bi bi-search" style="font-size: 15px"></i>
-          <!-- Icono de lupa -->
+        <button type="submit" class="btn" aria-label="Buscar">
+          <i class="bi bi-search icon-small"></i>
+
         </button>
+
       </form>
     </div>
   </nav>
@@ -1023,6 +1026,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         <!-- Noveno acordeón -->
@@ -1223,6 +1227,7 @@
         <div class="col-md-4 mb-3">
           <h5>Todos los derechos reservados</h5>
           <p>Copyright &copy; 2024 - Restaurante El Corral</p>
+          <p>Diseñado por <a href="#" class="text-white">Carlos Gomez</a></p>
         </div>
         <div class="col-md-4 mb-3">
           <h5>Esto es una copia de la pagina ofical El corral</h5>
@@ -1250,13 +1255,16 @@
         <i class="bi bi-whatsapp"></i>
       </div>
     </div>
+    </div>
   </footer>
 
   <!-- Bootstrap JavaScript Bundle (incluye Popper.js) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <script src="./script.js"></script>
+  <script src="./chatbot.js"></script>
+  <script src="./carrito.js"></script>
+  <script src="./main.js"></script>
 
 
 
