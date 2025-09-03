@@ -19,7 +19,11 @@ const port = process.env.PORT || 3000;
 // ========================================
 app.use(
   cors({
-    origin: ['http://127.0.0.1:5502', 'http://localhost:5502'],
+    origin: [
+      'http://127.0.0.1:5502',
+      'http://localhost:5502',
+      'https://projet1-production-959a.up.railway.app',
+    ],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
   })
