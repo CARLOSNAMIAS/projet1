@@ -76,5 +76,5 @@ app.post('/enviar-factura', (req, res) => {
 // INICIALIZACIÓN DEL SERVIDOR
 // ========================================
 app.listen(port, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${port}`);
+  console.log(`✅ Servidor corriendo en el puerto ${port}`);
 });
