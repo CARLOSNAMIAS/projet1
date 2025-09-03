@@ -20,12 +20,13 @@ const port = process.env.PORT || 3000;
 app.use(
   cors({
     origin: [
-      'http://127.0.0.1:5502',
-      'http://localhost:5502',
-      'https://projet1-production-959a.up.railway.app',
+      'http://127.0.0.1:5502', // desarrollo local
+      'http://localhost:5502', // desarrollo local
+      'https://projet1-production-959a.up.railway.app', // backend en Railway
+      'https://projet1-cyan.vercel.app', // frontend en Vercel ✅
     ],
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
